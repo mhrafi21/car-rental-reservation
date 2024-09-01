@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f1f1f1;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img:not(.fade) {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Customize slick slider buttons */
+.slick-prev,
+.slick-next {
+  font-size: 24px; /* Adjust button size as needed */
+  width: 50px; /* Adjust width */
+  height: 50px; /* Adjust height */
+  z-index: 10; /* Ensure buttons are on top of slides */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px; /* Adjust arrow icon size */
+  color: gray; /* Arrow color */
+}
+
+.slick-prev {
+  left: 20px; /* Adjust left position */
+}
+
+.slick-next {
+  right: 20px; /* Adjust right position */
+}
+
+/* HeroSection.css */
+.slick-dots li button:before {
+  color: blue;
+}
+
+.slick-dots li.slick-active button:before {
+  color: blue;
+}
