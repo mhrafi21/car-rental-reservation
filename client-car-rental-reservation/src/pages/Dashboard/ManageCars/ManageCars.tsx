@@ -7,23 +7,31 @@ import {
 } from "../../../redux/baseApi";
 import { TCar } from "../../../interfaces";
 import Swal from "sweetalert2";
+import UpdateCarModal from "./UpdateCarModal";
 
 const CarTable: React.FC = () => {
   const { data, isLoading } = useGetAllCarsQuery(undefined);
   const [createCar] = useCreateCarMutation(undefined);
   const [deleteSingleCar] = useDeleteSingleCarMutation(undefined);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm<TCar>();
+  const [updateCarId, setUpdateCarId] = useState<string| null>(null);
 
-  const handleAddCar = () => {
-    setIsModalOpen(true);
-  };
-
+// car update modal
   const handleUpdateCar = (id: string) => {
-    // Update Car logic here
-    console.log("Update Car clicked", id);
+   setUpdateCarId(id);
+    setIsUpdateModalOpen(true);
   };
 
+  // close the update car modal 
+  const handleCancel = () => {
+    setIsUpdateModalOpen(false);
+    setUpdateCarId(null);
+  }
+
+
+  // delete car 
   const handleDeleteCar = async (id: string) => {
    
 
@@ -56,6 +64,13 @@ const CarTable: React.FC = () => {
 
   };
 
+
+// open the add car modal 
+const handleAddCar = () => {
+  setIsModalOpen(true);
+};
+
+// add car submit 
   const onSubmit = async (data: TCar) => {
     const carInfo = {
       name: data?.name,
@@ -69,15 +84,21 @@ const CarTable: React.FC = () => {
       reviews: Number(data?.reviews),
     };
 
-    const res = await createCar(carInfo);
-    console.log(res);
+    const res = await createCar(carInfo).unwrap();
+
+    if(res?.success == true) {
+      Swal.fire("Success!", `${res?.message}`, "success");
+    }
 
     reset();
     setIsModalOpen(false);
   };
 
+
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
+       {isLoading && <div>Loading...</div>}
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200">
           <h1 className="text-2xl font-semibold text-gray-800">
@@ -130,7 +151,6 @@ const CarTable: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-            {isLoading && <div>Loading...</div>}
               {data?.data?.map((car: TCar) => (
                 <tr key={car._id}>
                   <td className="py-4 px-6 text-sm">
@@ -313,6 +333,21 @@ const CarTable: React.FC = () => {
           </div>
         </div>
       )}
+
+
+      {/* Update Car */}
+
+      {
+        isUpdateModalOpen && (
+          <UpdateCarModal 
+          key={Math.random()}
+          productId = {updateCarId}
+          onClose = {handleCancel}
+          />
+        )
+      }
+
+
     </div>
   );
 };

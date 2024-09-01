@@ -4,7 +4,7 @@ import { carModels } from './car.model'
 import { priceCalculate } from './car.utils'
 import noDataFound from '../../utils/notDataFound'
 import httpStatus from 'http-status'
-import { TBooking, TCarBooking } from '../booking/booking.interface'
+import AppError from '../../errors/AppError'
 
 const createCarIntoDB = async (payload: TCar) => {
   const result = await carModels.carModel.create(payload)
@@ -26,7 +26,18 @@ const updateCarFromDB = async (id: string, payload: TCar) => {
 
   const updateQuery: Partial<any> = { $set: carInfo }
 
-  if (features) {
+  const isExistFeatures = await carModels.carModel.findById(id)
+
+  if (!isExistFeatures) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Not found!')
+  }
+
+  const checkExists = isExistFeatures?.features?.find(feature =>
+    features.includes(feature),
+  )
+  if (checkExists) {
+    console.log('Already exists')
+  } else {
     updateQuery.$push = { features: { $each: features } }
   }
 

@@ -7,13 +7,10 @@ const DashboardRoot = () => {
     <div>
       <Header></Header>
       <ScrollRestoration />
-        <div className="md:flex">
-
-     
-        <div className="flex-1"> <DashboardHeader /></div>
-        <div className="flex-auto">
+        <div className="">
+        <div className=""> <DashboardHeader /></div>
+        <div className="lg:ml-60">
         <Outlet />
-    
        </div>
 
         </div>

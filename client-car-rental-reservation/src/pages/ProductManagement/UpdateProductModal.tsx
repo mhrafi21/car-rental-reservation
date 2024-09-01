@@ -135,7 +135,7 @@ const UpdateProductModal: React.FC<Props> = ({ productId, onClose }) => {
                   type="text"
                   id="productName"
                   defaultValue={product?.name}
-                  {...register("name", { required: true })}
+                  {...register("name")}
                   className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                     errors.name ? "border-red-500" : ""
                   }`}
@@ -206,7 +206,7 @@ const UpdateProductModal: React.FC<Props> = ({ productId, onClose }) => {
                 <textarea
                   id="description"
                   defaultValue={product?.description}
-                  {...register("description", { required: true })}
+                  {...register("description")}
                   className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                     errors.description ? "border-red-500" : ""
                   }`}
@@ -228,7 +228,7 @@ const UpdateProductModal: React.FC<Props> = ({ productId, onClose }) => {
                 </label>
                 <select
                   id="category"
-                  {...register("category", { required: true })}
+                  {...register("category")}
                   defaultValue={product?.category}
                   className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                     errors.category ? "border-red-500" : ""
@@ -282,7 +282,7 @@ const UpdateProductModal: React.FC<Props> = ({ productId, onClose }) => {
                 <textarea
                   id="images"
                   defaultValue={product?.images}
-                  {...register("images", { required: true })}
+                  {...register("images")}
                   className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                     errors.images ? "border-red-500" : ""
                   }`}

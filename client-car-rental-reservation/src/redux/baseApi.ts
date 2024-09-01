@@ -97,6 +97,17 @@ export const baseApi = createApi({
       providesTags: (id) => [{ type: "Cars", id }],
     }),
 
+    // update car 
+
+    updateSingleCarById: builder.mutation({
+      query: ({productId, ...carUpdateInfo }) => ({
+        url : `/cars/${productId}`,
+        method: "PUT",
+        body: carUpdateInfo,
+      }),
+      invalidatesTags: [{ type: "Cars"}],
+    }),
+
     getBooking: builder.query({
       query: () => ({
         url: `/bookings/my-bookings`,
@@ -112,6 +123,8 @@ export const baseApi = createApi({
       }),
       providesTags: (id) => [{ type: "Cars", id }],
     }),
+
+  
 
 
     createBookingCar: builder.mutation({
@@ -295,6 +308,7 @@ export const {
   useGetAllCarsQuery,
   useUpdateUserStatusOrRoleMutation,
   useGetAllUsersQuery,
+  useUpdateSingleCarByIdMutation,
   useCarBookingCancelMutation,
   useCarReturnAndUpdateDateMutation,
   useUpdateSingCarBookingApprovedStatusMutation,

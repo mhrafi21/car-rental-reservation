@@ -59,19 +59,27 @@ const Signup: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  {...register("name", { required: "Name is required" })}
-                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                  type="text"
-                  placeholder="John Doe"
-                />
-                {errors.name && (
-                  <p className="text-red-500 text-sm">{errors.name.message}</p>
-                )}
-              </div>
+        <label className="block text-sm font-medium text-gray-700">
+          Phone Number
+        </label>
+        <input
+          type="tel"
+          {...register('phone', {
+            required: 'Phone number is required',
+            pattern: {
+              value: /^[0-9]{11}$/, // Adjust pattern as needed
+              message: 'Please enter a valid 10-digit phone number',
+            },
+          })}
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+          placeholder="01..."
+        />
+        {errors.phone && (
+          <p className="text-red-500 text-sm">
+            {errors.phone.message}
+          </p>
+        )}
+      </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700">
