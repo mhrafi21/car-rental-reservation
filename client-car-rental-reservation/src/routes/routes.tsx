@@ -3,7 +3,6 @@ import Root from "../layouts/Root";
 import ErrorPage from "../Error-page";
 import HomePage from "../pages/Home/HomePage";
 import AboutUsPage from "../pages/AboutUsPage";
-import ProductsPage from "../pages/productPage/CarsPage";
 import ProductManagementPage from "../pages/ProductManagement/ProductManagementPage";
 import ProductDetailsPage from "../pages/productPage/ProductDetailsPage";
 import CheckoutPage from "../pages/CheckOutPage/CheckoutPage";
@@ -22,6 +21,8 @@ import ManageBooking from "../pages/Dashboard/ManageBooking/ManageBooking";
 import ManageReturnCars from "../pages/Dashboard/ManageReturnCars/ManageReturnCars";
 import UserManagement from "../pages/Dashboard/AdminDash/UserManagement/UserManagement";
 import Contact from "../pages/Contact/Contact";
+import CarsPage from "../pages/productPage/CarsPage";
+import SearchCar from "../pages/SearchCar/SearchCar";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,8 +34,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/product",
-        element: <ProductsPage />,
+        path: "/cars",
+        element: <CarsPage />
       },
       {
         path: "/product/:id",
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             <Booking />
           </ProtectedRoutes>
         ),
+      },
+      {
+        path: "/search",
+        element: <SearchCar />
       },
       {
         path: "/category/:categoryName",

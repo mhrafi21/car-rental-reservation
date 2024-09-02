@@ -10,6 +10,7 @@ const carSchema = new Schema<TCar>(
     image: {type: String, required: true},
     category: {type: String, required: true},
     reviews: {type: Number, required: true},
+    location: {type: String, required: true},
     status: {
       type: String,
       enum: ['available', 'unavailable'],

@@ -4,8 +4,11 @@ import heroImage from "../../assets/images/hero.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import DefaultContainer from "../../components/DefaultContainer";
+import Search from "./Search";
+
 
 const HeroSection: React.FC = () => {
+
   useEffect(() => {
     AOS.init({ once: true }); // Initialize AOS on component mount
   }, []);
@@ -33,45 +36,10 @@ const HeroSection: React.FC = () => {
                 Browse through a variety of cars and book your ride today!
               </p>
               <div className="bg-white text-black rounded-md shadow-md p-4 w-full max-w-3xl mb-6">
-                <form className="flex flex-col sm:flex-row gap-4">
-                  <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700">
-                      Location
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Enter location"
-                      className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700">
-                      Pick-up Date
-                    </label>
-                    <input
-                      type="date"
-                      className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700">
-                      Drop-off Date
-                    </label>
-                    <input
-                      type="date"
-                      className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors mt-4 sm:mt-0"
-                  >
-                    Search
-                  </button>
-                </form>
+                <Search />
               </div>
               <Link
-                to="/product"
+                to="/cars"
                 className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-300"
               >
                 Book Now

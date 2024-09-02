@@ -6,7 +6,8 @@ import { carServices } from './car.services'
 import { bookingServices } from '../booking/booking.services'
 
 const createCar = catchAsync(async (req, res) => {
-  const result = await carServices.createCarIntoDB(req.body as TCar)
+  const result = await carServices.createCarIntoDB(req.body as TCar);
+
   if (!result) {
     sendResponse(res, {
       statusCode: httpStatus.NOT_FOUND,
@@ -24,7 +25,8 @@ const createCar = catchAsync(async (req, res) => {
 })
 
 const getAllCar = catchAsync(async (req, res) => {
-  const result = await carServices.getAllCarFromDB()
+  const searchQuery = req.query;
+  const result = await carServices.getAllCarFromDB(searchQuery as Record<string, unknown>)
 
   if (!result?.length) {
     sendResponse(res, {
@@ -69,8 +71,6 @@ const updateCar = catchAsync(async (req, res) => {
 
 const updateBookingCar = catchAsync(async (req, res) => {
   const { bookingId, endTime } = req.body
-
-  console.log(req.body);
 
   const result = await carServices.updateBookingCarIntoDB(
     bookingId as string,

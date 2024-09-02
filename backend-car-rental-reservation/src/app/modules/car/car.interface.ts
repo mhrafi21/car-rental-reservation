@@ -6,6 +6,7 @@ export type TCar = {
   reviews: number
   color: string
   isElectric: boolean
+  location: string
   status: string
   features: string[]
   pricePerHour: number

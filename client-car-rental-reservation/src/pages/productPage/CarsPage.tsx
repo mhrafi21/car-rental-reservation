@@ -162,20 +162,9 @@ const CarsPage: React.FC = () => {
               className="p-2.5 border border-gray-300 rounded-md mr-4 mb-2 md:mb-0 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Categories</option>
-              <option value="camping-tent">Camping Tent</option>
-              <option value="backpack">Backpack</option>
-              <option value="sleeping-bag">Sleeping Bag</option>
-              <option value="portable-stove">Portable Stove</option>
-              <option value="camping-chair">Camping Chair</option>
-              <option value="lantern">Lantern</option>
-              <option value="hiking-boots">Hiking Boots</option>
-              <option value="camping-cookware">Camping Ware</option>
-              <option value="water-bottle">Water Bottle</option>
-              <option value="first-aid-kit">First Aid Kit</option>
-              <option value="camping-hammock">Camping Hammock</option>
-              <option value="camping-cooler">Camping Cooler</option>
-              <option value="outdoor-clothing">Outdoor Clothing</option>
-              <option value="camping-knife">Camping Knife</option>
+              <option value="sedan">sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="hybrid">Hybrid</option>
             </select>
 
             {/* Price Range */}

@@ -5,6 +5,7 @@ import cartReducer from "../redux/features/products/cartSlice";
 import paginationReducer from "../redux/features/products/paginationSlice";
 import authReducer from "../redux/features/auth/authSlice";
 import storage from "redux-persist/lib/storage";
+import searchReducer from "../redux/features/search/searchSlice.ts"
 import {
   persistReducer,
   persistStore,
@@ -30,6 +31,7 @@ export const store = configureStore({
     cart: cartReducer,
     pagination: paginationReducer,
     auth: persistedAuthReducer,
+    search: searchReducer
   }, // Your root reducer goes here. Replace with your actual reducer.
 
   middleware: (getDefaultMiddleware) =>

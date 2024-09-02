@@ -11,9 +11,74 @@ const createCarIntoDB = async (payload: TCar) => {
   return result
 }
 
-const getAllCarFromDB = async () => {
-  const result = await carModels.carModel.find({})
-  return result
+const getAllCarFromDB = async (payload : Record<string, unknown>) => {
+
+  try {
+    const { search, location, status, category, minPrice, maxPrice, sort, page = 1, limit = 10 } = payload
+    console.log(payload)
+
+    let filterQuery = {}
+
+    if(location){
+      filterQuery = { $regex: location, $options: "i" };
+   }
+ 
+   if(status){
+      filterQuery = { status: status }
+   }
+
+    // Searching product using product name or description
+    if (search) {
+      filterQuery = {
+        $or: [
+          { name: { $regex: search, $options: 'i' } },
+          { description: { $regex: search, $options: 'i' } },
+        ],
+      }
+    }
+
+    // Filter by price - min to max
+    if (minPrice || maxPrice) {
+      if (minPrice && !maxPrice) {
+        filterQuery = { ...filterQuery, pricePerHour: { $gte: Number(minPrice) } }
+      }
+      if (!minPrice && maxPrice) {
+        filterQuery = { ...filterQuery, pricePerHour: { $lte: Number(maxPrice) } }
+      }
+      if (minPrice && maxPrice) {
+        filterQuery = {
+          ...filterQuery,
+          pricePerHour: { $gte: Number(minPrice), $lte: Number(maxPrice) },
+        }
+      }
+    }
+
+    // Filter by category
+    if (category) {
+      filterQuery = { ...filterQuery, category }
+    }
+
+    // Sorting the products by price
+    let sortOption = {}
+
+    if (sort) {
+      sortOption = sort === 'asc' ? { price: 1 } : { price: -1 }
+    }
+
+    // pagination 
+
+    const limitNum = Number(limit);
+    const skipNum = (Number(page) - 1) * Number(limit);
+
+    const count = await carModels.carModel.countDocuments();
+    const totalPages = Math.ceil(count / Number(limit));
+    const result = await carModels.carModel.find(filterQuery).sort(sortOption).limit(limitNum).skip(skipNum)
+
+    return result
+
+  } catch (error) {
+    console.error('Error fetching products:', error)
+  }
 }
 
 const getSingleCarFromDB = async (id: string) => {
