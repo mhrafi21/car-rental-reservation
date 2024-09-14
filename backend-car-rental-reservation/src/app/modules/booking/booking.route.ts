@@ -4,7 +4,7 @@ import validateRequest from '../../middlewares/validateRequest'
 import { bookingValidation } from './booking.validation'
 import { USER_ROLE } from '../user/user.constant'
 import { auth, authUser } from '../Auth/auth'
-import { TUser, TUserRole } from '../user/user.interface'
+import { TUserRole } from '../user/user.interface'
 const router = express.Router()
 
 router.post(
