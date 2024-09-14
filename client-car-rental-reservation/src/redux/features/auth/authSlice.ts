@@ -5,12 +5,14 @@ import { RootState } from "../../store";
 type TUserState = {
   user: {name: string, email: string}
   token: string
+ 
 };
 
 const initialState: TUserState = {
   user: {
     name: "",
-    email: ""
+    email: "",
+
   },
   token: "",
 };

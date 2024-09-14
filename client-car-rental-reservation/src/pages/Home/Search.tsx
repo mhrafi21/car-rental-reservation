@@ -3,7 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { setSearchParams } from "../../redux/features/search/searchSlice";
 import { useNavigate } from "react-router-dom";
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "../../redux/store";
+
 
 interface SearchFormInputs {
   location: string;

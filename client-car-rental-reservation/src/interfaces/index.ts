@@ -1,4 +1,5 @@
 export type TCar = {
+  id?:string;
   _id?: string;
   name: string;
   description: string;
@@ -18,7 +19,7 @@ export type TUser = {
   id: string
   name: string;
   email: string;
-  role?: "user" | "admin";
+  role?: "user" | "admin" | string;
   password?: string;
   confirmPassword?: string;
   terms?: boolean;

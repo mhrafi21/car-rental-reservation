@@ -10,6 +10,7 @@ const createUserIntoDB = async (payload: TUser) => {
 
   const isAlreadyRegister = await User.findOne({ email: payload?.email })
 
+
   if (!isAlreadyRegister) {
     const result = await User.create(payload)
     return result
@@ -63,6 +64,8 @@ const updateStatusIntoDB = async (id: string, payload: TUser) => {
 
   return result
 }
+
+
 
 export {
   createUserIntoDB,

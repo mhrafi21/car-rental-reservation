@@ -133,7 +133,7 @@ export const baseApi = createApi({
         method: "POST",
         body: bookingInfo,
       }),
-      invalidatesTags: ({ _id }) => [{ type: "Cars", id: _id }],
+      invalidatesTags: [{ type: "Cars"}],
     }),
 
 

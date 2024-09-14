@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiUsers, FiSettings } from 'react-icons/fi';
+import { FiHome } from 'react-icons/fi';
 import { FaCar, FaClipboardList } from 'react-icons/fa';
 
 function UserDash() {
@@ -48,39 +48,18 @@ function UserDash() {
             <span> Dashboard</span>
           </Link>
           <Link
-            to="/dashboard/manage-cars"
+            to="/dashboard/my-account"
             className="flex items-center p-2 hover:bg-gray-700 rounded-md"
           >
             <FaCar className="mr-2" />
-            <span>Manage Cars</span>
+            <span>Profile</span>
           </Link>
           <Link
-            to="/dashboard/manage-bookings"
+            to="/dashboard/booking"
             className="flex items-center p-2 hover:bg-gray-700 rounded-md"
           >
             <FaClipboardList className="mr-2" />
             <span>Manage Bookings</span>
-          </Link>
-          <Link
-            to="/dashboard/manage-return-cars"
-            className="flex items-center p-2 hover:bg-gray-700 rounded-md"
-          >
-            <FaCar className="mr-2" />
-            <span>Manage Return Cars</span>
-          </Link>
-          <Link
-            to="/dashboard/user-management"
-            className="flex items-center p-2 hover:bg-gray-700 rounded-md"
-          >
-            <FiUsers className="mr-2" />
-            <span>User Management</span>
-          </Link>
-          <Link
-            to="/settings"
-            className="flex items-center p-2 hover:bg-gray-700 rounded-md"
-          >
-            <FiSettings className="mr-2" />
-            <span>Settings</span>
           </Link>
         </nav>
       </div>

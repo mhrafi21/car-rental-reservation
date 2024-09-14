@@ -124,7 +124,7 @@ const CarsPage: React.FC = () => {
   console.log(products)
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-white  dark:bg-gray-800 shadow">
       <DefaultContainer>
         <div className="py-8">
           <div className="">

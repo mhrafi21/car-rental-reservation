@@ -92,15 +92,6 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />
       },
-      {
-        path: "/my-account",
-        element: (
-          <ProtectedRoutes>
-            {" "}
-            <MyAccount />
-          </ProtectedRoutes>
-        ),
-      },
     ],
   },
   {
@@ -129,6 +120,15 @@ const router = createBrowserRouter([
     {
       path: "/dashboard/user-management",
       element: <ProtectedRoutes> <UserManagement /> </ProtectedRoutes>,
+    },
+    {
+      path: "/dashboard/my-account",
+      element: (
+        <ProtectedRoutes>
+          {" "}
+          <MyAccount />
+        </ProtectedRoutes>
+      ),
     }
       
     ]

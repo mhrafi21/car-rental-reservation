@@ -1,8 +1,12 @@
+import Search from "../Home/Search"
 
 const UserDashboard = () => {
 
   return (
-    <h2>User dashboard</h2>
+    <div>
+        <h2>My bookings</h2>
+        <Search />
+    </div>
   )
 }
 

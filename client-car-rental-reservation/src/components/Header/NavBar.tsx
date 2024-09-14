@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FiUser } from "react-icons/fi"; // import React, { useState, useEffect } from 'react';
@@ -33,6 +33,49 @@ const Navbar: React.FC = () => {
     navigate("/");
   };
 
+  // start dark mode
+  const [theme, setTheme] = useState("system");
+
+  useEffect(() => {
+    const userTheme = localStorage.getItem("theme") || "system";
+    setTheme(userTheme);
+
+    const root = window.document.documentElement;
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+
+    if (userTheme === "system") {
+      root.classList.remove("light", "dark");
+      root.classList.add(systemTheme);
+    } else {
+      root.classList.remove("light", "dark");
+      root.classList.add(userTheme);
+    }
+  }, []);
+
+  const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement> ) => {
+
+    const selectedTheme = event.target.value;
+    setTheme(selectedTheme)
+    localStorage.setItem("theme", selectedTheme);
+
+    const root = window.document.documentElement;
+    if (selectedTheme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      root.classList.remove("light", "dark");
+      root.classList.add(systemTheme);
+    } else {
+      root.classList.remove("light", "dark");
+      root.classList.add(selectedTheme);
+    }
+  };
+  // end dark mode
+
   return (
     <nav className="bg-gray-800 text-white">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
@@ -56,6 +99,17 @@ const Navbar: React.FC = () => {
             Contact
           </Link>
         </div>
+        <div>
+          <select
+            value={theme}
+            onChange={handleThemeChange}
+            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded text-gray-800 dark:text-white"
+          >
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+            <option value="system">System Mode</option>
+          </select>
+        </div>
         {!token ? (
           <Link to={"/signin"}>Singin/Signup</Link>
         ) : (
@@ -78,13 +132,7 @@ const Navbar: React.FC = () => {
                   >
                     Dashboard
                   </Link>
-                  <Link
-                    to="/my-account"
-                    className="block px-4 py-2 hover:bg-gray-200"
-                    onClick={closeDropdown}
-                  >
-                    Profile
-                  </Link>
+
                   {!token ? (
                     <Link
                       to="/signin"

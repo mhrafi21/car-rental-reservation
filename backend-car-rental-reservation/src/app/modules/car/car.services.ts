@@ -62,7 +62,7 @@ const getAllCarFromDB = async (payload : Record<string, unknown>) => {
     let sortOption = {}
 
     if (sort) {
-      sortOption = sort === 'asc' ? { price: 1 } : { price: -1 }
+      sortOption = sort === 'asc' ? { pricePerHour: 1 } : { pricePerHour: -1 }
     }
 
     // pagination 

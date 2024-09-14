@@ -29,18 +29,11 @@ const MyAccount = () => {
                 <input
                   type="email"
                   defaultValue={email}
+                  disabled
                   className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
+
             </div>
             <button
               type="submit"
