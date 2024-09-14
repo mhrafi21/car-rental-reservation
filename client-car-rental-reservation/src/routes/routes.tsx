@@ -23,6 +23,7 @@ import UserManagement from "../pages/Dashboard/AdminDash/UserManagement/UserMana
 import Contact from "../pages/Contact/Contact";
 import CarsPage from "../pages/productPage/CarsPage";
 import SearchCar from "../pages/SearchCar/SearchCar";
+import ManageUserBooking from "../pages/Dashboard/ManageUserBooking/ManageUserBooking";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -121,6 +122,11 @@ const router = createBrowserRouter([
       path: "/dashboard/user-management",
       element: <ProtectedRoutes> <UserManagement /> </ProtectedRoutes>,
     },
+   {
+    path: "/dashboard/my-bookings",
+    element: <ProtectedRoutes><ManageUserBooking /></ProtectedRoutes>
+   },
+
     {
       path: "/dashboard/my-account",
       element: (

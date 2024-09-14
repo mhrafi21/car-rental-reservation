@@ -12,7 +12,6 @@ const DashboardRoot = () => {
         <div className="lg:ml-60">
         <Outlet />
        </div>
-
         </div>
     </div>
   );

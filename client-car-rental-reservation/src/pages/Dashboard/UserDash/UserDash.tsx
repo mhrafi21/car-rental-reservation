@@ -55,7 +55,7 @@ function UserDash() {
             <span>Profile</span>
           </Link>
           <Link
-            to="/dashboard/booking"
+            to="/dashboard/my-bookings"
             className="flex items-center p-2 hover:bg-gray-700 rounded-md"
           >
             <FaClipboardList className="mr-2" />

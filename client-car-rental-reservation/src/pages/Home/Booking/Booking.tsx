@@ -1,193 +1,200 @@
-import React from "react";
-import {
-  useCarBookingCancelMutation,
-  useGetBookingQuery,
-} from "../../../redux/baseApi";
-import DefaultContainer from "../../../components/DefaultContainer";
-import { TBooking } from "../../../interfaces";
-import Swal from "sweetalert2";
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
-const Booking: React.FC = () => {
-  const { data, isLoading } = useGetBookingQuery(undefined);
-  const [carBookingCancel] = useCarBookingCancelMutation(undefined);
+interface CarDetails {
+  name: string;
+  description: string;
+  features: string[];
+  insurance: string;
+  cancellationPolicy: string;
+}
 
-  const handleCancel = async (id: string) => {
-  
-   
-    try {
-      const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "You will be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Cancel it!",
-      });
+const carDetails: CarDetails = {
+  name: 'Tesla Model 3',
+  description: 'An electric sedan with top-notch features and autopilot capabilities.',
+  features: ['Autopilot', 'Electric Engine', 'GPS Navigation', 'Luxury Interior'],
+  insurance: 'Full coverage insurance included.',
+  cancellationPolicy: 'Free cancellation up to 24 hours before pick-up.',
+};
 
-      if (result.isConfirmed) {
-        const res = await carBookingCancel({ id: id, isCancel: true }).unwrap();
+const CarDetailsPage: React.FC = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-        if (res?.success === true) {
-          Swal.fire("Cancelled!", `${res?.message}`, "success");
-        }
-      }
-    } catch (error) {
-      Swal.fire(
-        "Failed!",
-        "There was a problem Cancelling your product.",
-        "error"
-      );
-      console.error("Failed to Cancel product:", error);
-    }
-
-
+  const onSubmit = (data: any) => {
+    console.log('Form data:', data);
+    // Handle booking submission
   };
-
-  const handleBooking = async (id: string) => {
-
-    try {
-      const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "You will be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Booking it!",
-      });
-
-      if (result.isConfirmed) {
-        const res = await carBookingCancel({ id: id, isCancel: false }).unwrap();
-
-        if (res?.success === true) {
-          Swal.fire("Booked!", "Booking is successfully added", "success");
-        }
-      }
-    } catch (error) {
-      Swal.fire(
-        "Failed!",
-        "There was a problem Booking your product.",
-        "error"
-      );
-      console.error("Failed to Booking product:", error);
-    }
-   
-  };
-
-
 
   return (
-    <div>
-      <DefaultContainer>
-        {isLoading && "Loading"}
-        <div className="py-10">
-          {data?.data &&
-            data?.data?.map((car: TBooking) => (
-              <div
-                className="bg-white shadow-lg rounded-lg overflow-hidden"
-                key={car?._id}
-              >
-                <img
-                  src={car?.car?.image}
-                  alt={car?.car?.name}
-                  className="w-full h-64 object-cover"
-                />
+    <div className="container mx-auto p-6">
+      {/* Car Details Section */}
+      <div className="car-details bg-white shadow-lg rounded-md p-6 mb-6">
+        <h1 className="text-4xl font-bold mb-4">{carDetails.name}</h1>
+        <p className="text-gray-700 text-lg mb-6">{carDetails.description}</p>
 
-                <div className="p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8">
-                    <div>
-                      <h2 className="text-3xl font-bold text-gray-800">
-                        {car?.car?.name}
-                      </h2>
-                      <p className="text-gray-600 mt-2">
-                        {car?.car?.description}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Color:</strong> {car?.car?.color}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Category:</strong> {car?.car?.category}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Price Per Hour:</strong> $
-                        {car?.car?.pricePerHour}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Availability:</strong>{" "}
-                        {car?.car?.status === "available"
-                          ? "Available"
-                          : "Unavailable"}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Electric car:</strong>{" "}
-                        {car?.car?.isElectric ? "Yes" : "No"}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Features:</strong>{" "}
-                        {car?.car?.features.join(", ")}
-                      </p>
-                      <p className="text-gray-600 mt-2">
-                        <strong>Reviews:</strong> {car?.car?.reviews} Stars
-                      </p>
-                    </div>
-                    <div>
-                      <div className="mt-6 md:mt-0">
-                        <h3 className="text-xl font-semibold text-gray-800">
-                          Booking Information
-                        </h3>
-                        <p className="mt-2">
-                          <strong className="text-gray-600 ">
-                            Approve Type
-                          </strong>
-                          :{" "}
-                          {car?.approved === false ? (
-                            <span className="text-red-600">Pending</span>
-                          ) : (
-                            <span className="text-green-600">Approved</span>
-                          )}
-                        </p>
-                        <p className="text-gray-600 mt-2">
-                          <strong>Date:</strong> {car?.date}
-                        </p>
-                        <p className="text-gray-600 mt-2">
-                          <strong>Start Time:</strong> {car?.startTime}
-                        </p>
-                        {car.endTime && (
-                          <p className="text-gray-600 mt-2">
-                            <strong>End Time:</strong> {car?.endTime}
-                          </p>
-                        )}
-                        <p className="text-gray-600 mt-2">
-                          <strong>Total Cost:</strong> ${car?.totalCost}
-                        </p>
-                      </div>
-
-                      {car?.isCancel === false ? (
-                        <button
-                          className="mt-6 px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white"
-                          onClick={() => handleCancel(car._id as string)}
-                          disabled={car?.approved === true}
-                        >
-                          Cancel
-                        </button>
-                      ) : (
-                        <button
-                          className="mt-6 px-4 py-2 rounded-md bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => handleBooking(car._id as string)}
-                        >
-                          Booking
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="features mb-6">
+          <h2 className="text-xl font-semibold mb-2">Features:</h2>
+          <ul className="list-disc list-inside">
+            {carDetails.features.map((feature, index) => (
+              <li key={index} className="text-gray-600 text-md">
+                {feature}
+              </li>
             ))}
+          </ul>
         </div>
-      </DefaultContainer>
+
+        <div className="insurance mb-6">
+          <h2 className="text-xl font-semibold mb-2">Insurance:</h2>
+          <p className="text-gray-600 text-md">{carDetails.insurance}</p>
+        </div>
+
+        <div className="cancellation-policy mb-6">
+          <h2 className="text-xl font-semibold mb-2">Cancellation Policy:</h2>
+          <p className="text-gray-600 text-md">{carDetails.cancellationPolicy}</p>
+        </div>
+      </div>
+
+      {/* Booking Form */}
+      <div className="booking-form bg-white shadow-lg rounded-md p-6">
+        <h2 className="text-2xl font-bold mb-4">Booking Form</h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Personal Details */}
+          <div>
+            <label htmlFor="nid" className="block text-gray-700 font-medium">
+              NID/Passport
+            </label>
+            <input
+              type="text"
+              id="nid"
+              className="w-full border-gray-300 rounded-md p-3 mt-1"
+              {...register('nid', { required: true })}
+            />
+            {errors.nid && (
+              <p className="text-red-500 text-sm">NID/Passport is required.</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="license" className="block text-gray-700 font-medium">
+              Driving License
+            </label>
+            <input
+              type="text"
+              id="license"
+              className="w-full border-gray-300 rounded-md p-3 mt-1"
+              {...register('license', { required: true })}
+            />
+            {errors.license && (
+              <p className="text-red-500 text-sm">Driving License is required.</p>
+            )}
+          </div>
+
+          {/* Payment Information */}
+          <div className="payment-section">
+            <h3 className="text-xl font-semibold">Payment Information</h3>
+
+            <div>
+              <label htmlFor="cardNumber" className="block text-gray-700 font-medium">
+                Card Number
+              </label>
+              <input
+                type="text"
+                id="cardNumber"
+                className="w-full border-gray-300 rounded-md p-3 mt-1"
+                {...register('cardNumber', {
+                  required: true,
+                  pattern: /^[0-9]{16}$/,
+                })}
+              />
+              {errors.cardNumber && (
+                <p className="text-red-500 text-sm">
+                  Card Number is required and must be 16 digits.
+                </p>
+              )}
+            </div>
+
+            <div className="flex space-x-4">
+              <div>
+                <label htmlFor="expiryDate" className="block text-gray-700 font-medium">
+                  Expiry Date (MM/YY)
+                </label>
+                <input
+                  type="text"
+                  id="expiryDate"
+                  className="w-full border-gray-300 rounded-md p-3 mt-1"
+                  {...register('expiryDate', {
+                    required: true,
+                    pattern: /^(0[1-9]|1[0-2])\/([0-9]{2})$/,
+                  })}
+                />
+                {errors.expiryDate && (
+                  <p className="text-red-500 text-sm">
+                    Expiry Date is required and must be in MM/YY format.
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="cvv" className="block text-gray-700 font-medium">
+                  CVV
+                </label>
+                <input
+                  type="text"
+                  id="cvv"
+                  className="w-full border-gray-300 rounded-md p-3 mt-1"
+                  {...register('cvv', {
+                    required: true,
+                    pattern: /^[0-9]{3}$/,
+                  })}
+                />
+                {errors.cvv && (
+                  <p className="text-red-500 text-sm">
+                    CVV is required and must be 3 digits.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Options */}
+          <div>
+            <h3 className="text-xl font-semibold">Additional Options</h3>
+            <div className="flex items-center mt-2">
+              <input
+                type="checkbox"
+                id="gps"
+                className="mr-2"
+                {...register('gps')}
+              />
+              <label htmlFor="gps" className="text-gray-700">
+                GPS
+              </label>
+            </div>
+            <div className="flex items-center mt-2">
+              <input
+                type="checkbox"
+                id="childSeat"
+                className="mr-2"
+                {...register('childSeat')}
+              />
+              <label htmlFor="childSeat" className="text-gray-700">
+                Child Seat
+              </label>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700"
+          >
+            Confirm Booking
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Booking;
+export default CarDetailsPage;
