@@ -6,6 +6,8 @@ import paginationReducer from "../redux/features/products/paginationSlice";
 import authReducer from "../redux/features/auth/authSlice";
 import storage from "redux-persist/lib/storage";
 import searchReducer from "../redux/features/search/searchSlice.ts"
+import bookingReducer from "../redux/features/booking/bookingSlice.ts"
+import confirmBookingReducer from "../redux/features/booking/confirmBookingSlice.ts"
 import {
   persistReducer,
   persistStore,
@@ -31,7 +33,9 @@ export const store = configureStore({
     cart: cartReducer,
     pagination: paginationReducer,
     auth: persistedAuthReducer,
-    search: searchReducer
+    search: searchReducer,
+    booking: bookingReducer,
+    confirmBooking: confirmBookingReducer
   }, // Your root reducer goes here. Replace with your actual reducer.
 
   middleware: (getDefaultMiddleware) =>

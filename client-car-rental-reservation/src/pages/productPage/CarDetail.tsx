@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { TBooking, TCar } from "../../interfaces";
 import moment from "moment";
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useCreateBookingCarMutation } from "../../redux/baseApi";
-import toast from "react-hot-toast";
+// import { useCreateBookingCarMutation } from "../../redux/baseApi";
+// import toast from "react-hot-toast";
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
+import { useAppDispatch } from "../../redux/hooks";
+import { setBooking } from "../../redux/features/booking/bookingSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
-  const [addToBooking] = useCreateBookingCarMutation(undefined);
+  // const [addToBooking] = useCreateBookingCarMutation(undefined);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<TBooking>();
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
@@ -21,15 +26,19 @@ const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
       carId: product._id,
       date: formattedDate,
       startTime: formattedTime,
-    };
-
-    const res = await addToBooking(bookingData).unwrap();
-
-    if (res?.success === true) {
-      toast.success("Booking successful!");
-    } else {
-      toast.error("Failed to book the car. Please try again later.");
+      booking: product
     }
+
+    dispatch(setBooking(bookingData))
+    navigate("/booking")
+
+    // const res = await addToBooking(bookingData).unwrap();
+
+    // if (res?.success === true) {
+    //   toast.success("Booking successful!");
+    // } else {
+    //   toast.error("Failed to book the car. Please try again later.");
+    // }
   };
 
   return (

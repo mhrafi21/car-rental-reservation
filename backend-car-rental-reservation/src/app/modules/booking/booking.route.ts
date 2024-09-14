@@ -4,12 +4,12 @@ import validateRequest from '../../middlewares/validateRequest'
 import { bookingValidation } from './booking.validation'
 import { USER_ROLE } from '../user/user.constant'
 import { auth, authUser } from '../Auth/auth'
-import { TUserRole } from '../user/user.interface'
+import { TUser, TUserRole } from '../user/user.interface'
 const router = express.Router()
 
 router.post(
   '/',
-  authUser(USER_ROLE.USER as TUserRole),
+  authUser((USER_ROLE.USER || USER_ROLE.ADMIN) as TUserRole ),
   validateRequest(bookingValidation.bookingValidationSchema),
   bookingControllers.createBooking,
 )

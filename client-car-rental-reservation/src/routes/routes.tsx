@@ -24,6 +24,7 @@ import Contact from "../pages/Contact/Contact";
 import CarsPage from "../pages/productPage/CarsPage";
 import SearchCar from "../pages/SearchCar/SearchCar";
 import ManageUserBooking from "../pages/Dashboard/ManageUserBooking/ManageUserBooking";
+import BookingConfirmation from "../pages/Home/Booking/ConfirmBooking/ConfirmBooking";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,6 +56,12 @@ const router = createBrowserRouter([
             <Booking />
           </ProtectedRoutes>
         ),
+      },
+      {
+        path: "/confirm-booking",
+        element: <ProtectedRoutes>
+          <BookingConfirmation></BookingConfirmation>
+        </ProtectedRoutes>
       },
       {
         path: "/search",
@@ -126,7 +133,6 @@ const router = createBrowserRouter([
     path: "/dashboard/my-bookings",
     element: <ProtectedRoutes><ManageUserBooking /></ProtectedRoutes>
    },
-
     {
       path: "/dashboard/my-account",
       element: (

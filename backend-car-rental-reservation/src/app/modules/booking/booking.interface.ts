@@ -8,6 +8,15 @@ export type TBooking = {
   car: Types.ObjectId
   startTime: string
   endTime: string | null
+
+  name: string
+  address: string
+  phone: string
+  license: string
+  nid: string
+  gps: boolean
+  childSeat: boolean
+
   totalCost: number
   approved: boolean
   isCancel: boolean

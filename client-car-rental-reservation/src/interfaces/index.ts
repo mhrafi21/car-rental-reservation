@@ -39,6 +39,20 @@ export type TBooking = {
   isCancel?: boolean
 };
 
+export type TBookingState = {
+  carId: string
+  date: string
+  startTime: string
+  booking?: TCar | null,
+  name: string,
+  address: string,
+  phone: string
+  license: string
+  nid: string
+  gps: boolean,
+  childSeat: boolean
+};
+
 export type TProduct = {
   _id?: string;
   name: string;
