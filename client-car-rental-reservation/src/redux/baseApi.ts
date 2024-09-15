@@ -21,41 +21,40 @@ export type UpdateCartMutationResult =
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ 
+  baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:5000/api",
-    credentials:  "include",
+    credentials: "include",
     prepareHeaders: (headers, { getState }) => {
       const state = getState() as RootState;
       const token = state.auth.token;
-    
+
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
-      } 
+      }
       return headers;
     },
-    
+  }),
 
-   }),
+  tagTypes: ["Cars", "Bookings"],
 
-  tagTypes: ["Cars", "Carts"],
   endpoints: (builder) => ({
     createSignup: builder.mutation({
       query: (signupInfo) => {
         return {
           url: "/auth/signup",
           method: "POST",
-          body: signupInfo
-        }
-      }
+          body: signupInfo,
+        };
+      },
     }),
     createLogin: builder.mutation({
       query: (loginInfo) => {
         return {
           url: "/auth/signin",
           method: "POST",
-          body: loginInfo
-        }
-      }
+          body: loginInfo,
+        };
+      },
     }),
     createProduct: builder.mutation({
       query: (product) => {
@@ -89,6 +88,7 @@ export const baseApi = createApi({
       },
       providesTags: [{ type: "Cars", id: "LIST" }],
     }),
+
     getSingleCarById: builder.query({
       query: (id) => ({
         url: `/cars/${id}`,
@@ -97,15 +97,15 @@ export const baseApi = createApi({
       providesTags: (id) => [{ type: "Cars", id }],
     }),
 
-    // update car 
+    // update car
 
     updateSingleCarById: builder.mutation({
-      query: ({productId, ...carUpdateInfo }) => ({
-        url : `/cars/${productId}`,
+      query: ({ productId, ...carUpdateInfo }) => ({
+        url: `/cars/${productId}`,
         method: "PUT",
         body: carUpdateInfo,
       }),
-      invalidatesTags: [{ type: "Cars"}],
+      invalidatesTags: [{ type: "Cars" }],
     }),
 
     getBooking: builder.query({
@@ -113,7 +113,7 @@ export const baseApi = createApi({
         url: `/bookings/my-bookings`,
         method: "GET",
       }),
-      providesTags: (id) => [{ type: "Cars", id }],
+      providesTags: (id) => [{ type: "Bookings", id }],
     }),
 
     getAllBookings: builder.query({
@@ -124,40 +124,43 @@ export const baseApi = createApi({
       providesTags: (id) => [{ type: "Cars", id }],
     }),
 
-  
-
-
     createBookingCar: builder.mutation({
       query: (bookingInfo) => ({
         url: `/bookings`,
         method: "POST",
         body: bookingInfo,
       }),
-      invalidatesTags: [{ type: "Cars"}],
+      invalidatesTags: [{ type: "Bookings", id: "LIST" }],
     }),
 
+    // single booking
+    getSingleBookings: builder.query({
+      query: () => ({
+        url: `/bookings/my-bookings`,
+        method: "GET",
+      }),
+      providesTags: [{ type: "Bookings", id: "LIST" }],
+    }),
 
     carReturnAndUpdateDate: builder.mutation({
-    
       query: (carsInfo) => ({
         url: `/cars/return`,
         method: "PUT",
-        body: carsInfo
+        body: carsInfo,
       }),
-      invalidatesTags: [{type: "Cars"}],
-    }),
-
-    carBookingCancel : builder.mutation({
-      query: ({id, isCancel}) => {
-        return {
-          url: `/bookings/cancel/${id}`,
-          method: "PATCH",
-          body: {isCancel:isCancel}
-        };
-      },
       invalidatesTags: [{ type: "Cars" }],
     }),
 
+    carBookingCancel: builder.mutation({
+      query: ({ bookingId, isCancel }) => {
+        return {
+          url: `/bookings/cancel/${bookingId}`,
+          method: "PATCH",
+          body: { isCancel: isCancel },
+        };
+      },
+      invalidatesTags: [{ type: "Bookings" }],
+    }),
 
     updateProductById: builder.mutation({
       query: ({ productId, ...product }) => ({
@@ -179,11 +182,11 @@ export const baseApi = createApi({
     }),
 
     updateSingCarBookingApprovedStatus: builder.mutation({
-      query: ({id,approved}) => {
+      query: ({ id, approved }) => {
         return {
           url: `/bookings/${id}`,
           method: "PATCH",
-          body: {approved},
+          body: { approved },
         };
       },
       invalidatesTags: ({ _id }) => [{ type: "Cars", id: _id }],
@@ -198,30 +201,21 @@ export const baseApi = createApi({
           method: "GET",
         };
       },
-      providesTags: () => [{ type: "Cars"}],
+      providesTags: () => [{ type: "Cars" }],
     }),
 
-
-    // update user status and role 
+    // update user status and role
 
     updateUserStatusOrRole: builder.mutation({
-      query: ({id, role, status}) => {
+      query: ({ id, role, status }) => {
         return {
           url: `/auth/users/${id}`,
           method: "PUT",
-          body: {role, status},
+          body: { role, status },
         };
       },
       invalidatesTags: ({ id }) => [{ type: "Cars", id: id }],
     }),
-
-
-
-
-
-
-
- 
 
     deleteSingleProduct: builder.mutation({
       query: (id) => {
@@ -239,8 +233,7 @@ export const baseApi = createApi({
           method: "POST",
           body: product,
         };
-      },
-      invalidatesTags: [{ type: "Carts", id: "LIST" }],
+      }
     }),
 
     getAllCarts: builder.query({
@@ -305,6 +298,7 @@ export const {
   useCreateProductMutation,
   useCreateCarMutation,
   useDeleteSingleCarMutation,
+  useGetSingleBookingsQuery,
   useGetAllCarsQuery,
   useUpdateUserStatusOrRoleMutation,
   useGetAllUsersQuery,

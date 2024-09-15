@@ -1,5 +1,5 @@
 export type TCar = {
-  id?:string;
+  id?: string;
   _id?: string;
   name: string;
   description: string;
@@ -16,14 +16,14 @@ export type TCar = {
 
 export type TUser = {
   _id?: string;
-  id: string
+  id: string;
   name: string;
   email: string;
   role?: "user" | "admin" | string;
   password?: string;
   confirmPassword?: string;
   terms?: boolean;
-  status: string
+  status: string;
 };
 
 export type TBooking = {
@@ -33,24 +33,30 @@ export type TBooking = {
   startTime: string;
   endTime: string;
   totalCost: number;
-  date?: string
-  time?: string
-  approved?: boolean
-  isCancel?: boolean
+  date?: string;
+  time?: string;
+  approved?: boolean;
+  isCancel?: boolean;
 };
 
 export type TBookingState = {
-  carId: string
-  date: string
-  startTime: string
-  booking?: TCar | null,
-  name: string,
-  address: string,
-  phone: string
-  license: string
-  nid: string
-  gps: boolean,
-  childSeat: boolean
+  _id?: string;
+  carId: string;
+  date: string;
+  startTime: string;
+  booking?: TCar | null;
+  name: string;
+  address: string;
+  phone: string;
+  license: string;
+  nid: string;
+  gps: boolean;
+  childSeat: boolean;
+  time?: string;
+  endTime?: string;
+  totalCost?: number;
+  approved?: boolean;
+  isCancel?: boolean;
 };
 
 export type TProduct = {

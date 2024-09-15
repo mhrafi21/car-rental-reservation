@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { TBooking, TCar } from "../../interfaces";
+import { TBookingState, TCar } from "../../interfaces";
 import moment from "moment";
 import { useForm, SubmitHandler } from 'react-hook-form';
-// import { useCreateBookingCarMutation } from "../../redux/baseApi";
-// import toast from "react-hot-toast";
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import { useAppDispatch } from "../../redux/hooks";
@@ -14,11 +12,11 @@ const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
   // const [addToBooking] = useCreateBookingCarMutation(undefined);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm<TBooking>();
+  const { register, handleSubmit, formState: { errors } } = useForm<TBookingState>();
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
   
-  const onSubmit: SubmitHandler<TBooking> = async(data) => {
+  const onSubmit: SubmitHandler<TBookingState> = async(data) => {
     const formattedDate = moment(data.date).format('YYYY-MM-DD');
     const formattedTime = moment(data.time, 'HH:mm').format('HH:mm');
     
@@ -26,7 +24,9 @@ const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
       carId: product._id,
       date: formattedDate,
       startTime: formattedTime,
-      booking: product
+      booking: product,
+      childSeat: data.childSeat,
+      gps: data.gps,
     }
 
     dispatch(setBooking(bookingData))
@@ -39,6 +39,7 @@ const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
     // } else {
     //   toast.error("Failed to book the car. Please try again later.");
     // }
+
   };
 
   return (
@@ -69,7 +70,7 @@ const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
           <p className="text-gray-600 mb-6">{product?.description}</p>
           <div className=" mb-4">
             <span className="text-2xl font-semibold text-gray-900 mr-4">
-              ${product?.pricePerHour.toFixed(2)}
+              ${product?.pricePerHour.toFixed(2)}/hour
             </span>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -114,8 +115,37 @@ const ProductDetail: React.FC<{ product: TCar }> = ({ product }) => {
                   />
                   {errors.time && <p className="text-red-500 text-sm mt-1">Time is required</p>}
                 </div>
+
+                
+              {/* Additional Options */}
               </div>
             </div>
+              <div>
+                <h3 className="text-xl font-semibold">Additional Options</h3>
+                <div className="flex items-center mt-2">
+                  <input
+                    type="checkbox"
+                    id="gps"
+                    className="mr-2"
+                    {...register("gps")}
+                  />
+                  <label htmlFor="gps" className="text-gray-700">
+                    GPS
+                  </label>
+                </div>
+                <div className="flex items-center mt-2">
+                  <input
+                    type="checkbox"
+                    id="childSeat"
+                    className="mr-2"
+                    {...register("childSeat")}
+                  />
+                  <label htmlFor="childSeat" className="text-gray-700">
+                    Child Seat
+                  </label>
+                </div>
+              </div>
+                
             <div className="">
               <button
                 type="submit"

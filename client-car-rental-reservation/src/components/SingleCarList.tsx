@@ -23,7 +23,7 @@ const ProductsList: React.FC<{ product: TCar }> = ({ product }) => {
           {/* Product Details Button */}
           <Link to={`/product/${product._id}`}>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-full">
-              Product Details
+            View Details
             </button>
           </Link>
         </div>

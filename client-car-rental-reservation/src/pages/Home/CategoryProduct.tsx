@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetAllCarsQuery } from "../../redux/baseApi";
-import ProductsList from "../../components/ProductsList";
+import ProductsList from "../../components/SingleCarList";
 import { TCar } from "../../interfaces";
 import DefaultContainer from "../../components/DefaultContainer";
 

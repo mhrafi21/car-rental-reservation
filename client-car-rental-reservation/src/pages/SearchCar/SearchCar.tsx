@@ -2,7 +2,7 @@ import React from "react";
 import { useAppSelector } from "../../redux/hooks";
 import { RootState } from "../../redux/store";
 import { useGetAllCarsQuery } from "../../redux/baseApi";
-import ProductsList from "../../components/ProductsList";
+import ProductsList from "../../components/SingleCarList";
 import { TCar } from "../../interfaces";
 import DefaultContainer from "../../components/DefaultContainer";
 import Search from "../Home/Search";

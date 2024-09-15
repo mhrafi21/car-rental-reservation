@@ -11,7 +11,7 @@ import { RootState, AppDispatch } from "../../redux/store";
 import { useGetAllCarsQuery } from "../../redux/baseApi";
 import DefaultContainer from "../../components/DefaultContainer";
 import { TCar } from "../../interfaces";
-import ProductsList from "../../components/ProductsList";
+import ProductsList from "../../components/SingleCarList";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaSearch } from "react-icons/fa";

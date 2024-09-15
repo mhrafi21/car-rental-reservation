@@ -16,8 +16,7 @@ export type TBooking = {
   nid: string
   gps: boolean
   childSeat: boolean
-
-  totalCost: number
+  totalCost?: number
   approved: boolean
   isCancel: boolean
 }

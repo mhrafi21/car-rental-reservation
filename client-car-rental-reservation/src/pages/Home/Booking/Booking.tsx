@@ -9,11 +9,12 @@ import { setConfirmBooking } from "../../../redux/features/booking/confirmBookin
 
 const CarDetailsPage: React.FC = () => {
   const navigate = useNavigate();
-  const { carId, date, startTime, booking } = useAppSelector(
+  
+  const dispatch = useAppDispatch();
+  
+  const { carId, date, startTime, booking,childSeat,gps } = useAppSelector(
     (state) => state.booking
   );
-
-  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -34,11 +35,10 @@ const CarDetailsPage: React.FC = () => {
       phone: data.phone,
       license: data.license,
       nid: data.nid,
-      gps: data.gps,
-      childSeat: data.childSeat,
+      gps: gps,
+      childSeat:childSeat,
     }
 
-    console.log(bookingData);
     dispatch(setConfirmBooking(bookingData));
     navigate("/confirm-booking")
   };
@@ -50,6 +50,7 @@ const CarDetailsPage: React.FC = () => {
           {/* Car Details Section */}
           <div className="car-details bg-white shadow-lg rounded-md p-6 mb-6">
             <h1 className="text-4xl font-bold mb-4">{booking?.name}</h1>
+
             <p className="text-gray-700 text-lg mb-6">{booking?.description}</p>
             <div className="features mb-6">
               <h2 className="text-xl font-semibold mb-2">Features:</h2>
@@ -179,33 +180,6 @@ const CarDetailsPage: React.FC = () => {
                       </p>
                     )}
                   </div>
-                </div>
-              </div>
-
-              {/* Additional Options */}
-              <div>
-                <h3 className="text-xl font-semibold">Additional Options</h3>
-                <div className="flex items-center mt-2">
-                  <input
-                    type="checkbox"
-                    id="gps"
-                    className="mr-2"
-                    {...register("gps")}
-                  />
-                  <label htmlFor="gps" className="text-gray-700">
-                    GPS
-                  </label>
-                </div>
-                <div className="flex items-center mt-2">
-                  <input
-                    type="checkbox"
-                    id="childSeat"
-                    className="mr-2"
-                    {...register("childSeat")}
-                  />
-                  <label htmlFor="childSeat" className="text-gray-700">
-                    Child Seat
-                  </label>
                 </div>
               </div>
 

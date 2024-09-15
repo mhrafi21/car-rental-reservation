@@ -4,10 +4,11 @@ import DefaultContainer from "../../../../components/DefaultContainer";
 import { TBookingState } from "../../../../interfaces";
 import { useCreateBookingCarMutation } from "../../../../redux/baseApi";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const BookingConfirmation = () => {
+const BookingConfirmation: React.FC = () => {
   const [addToBooking, { isLoading }] = useCreateBookingCarMutation(undefined);
-
+  const navigate = useNavigate();
   const {
     carId,
     date,
@@ -23,10 +24,11 @@ const BookingConfirmation = () => {
   } = useAppSelector((state) => state.confirmBooking);
 
   const handleConfirm = async (confirmBookingData: TBookingState) => {
-    console.log(confirmBookingData);
+   
     const res = await addToBooking(confirmBookingData).unwrap();
     if (res.success === true) {
       toast.success("Your order has been placed!");
+      navigate("/dashboard/my-bookings")
     }
   };
 
@@ -65,16 +67,6 @@ const BookingConfirmation = () => {
             </p>
             <p>
               <strong>Driving License:</strong> {license}
-            </p>
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold">Additional Options</h3>
-            <p>
-              <strong>GPS:</strong> {gps === true ? "Yes" : "No"}
-            </p>
-            <p>
-              <strong>Child Seat:</strong> {childSeat === true ? "Yes" : "No"}
             </p>
           </div>
 
