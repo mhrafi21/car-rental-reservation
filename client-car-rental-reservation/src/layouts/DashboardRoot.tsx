@@ -7,12 +7,15 @@ const DashboardRoot = () => {
     <div>
       <Header></Header>
       <ScrollRestoration />
+      <div className="">
         <div className="">
-        <div className=""> <DashboardHeader /></div>
-        <div className="lg:ml-60">
-        <Outlet />
-       </div>
+          {" "}
+          <DashboardHeader />
         </div>
+        <div>
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-
+import img from "../../assets/images/team2.jpg"
+import DefaultContainer from '../../components/DefaultContainer';
 interface Testimonial {
   id: number;
   name: string;
@@ -14,21 +15,21 @@ const testimonials: Testimonial[] = [
     name: 'John Doe',
     review: 'Amazing service! The car was in perfect condition, and the process was smooth and hassle-free.',
     rating: 5,
-    image: 'https://example.com/john.jpg', // Replace with actual image URL
+    image: img, // Replace with actual image URL
   },
   {
     id: 2,
     name: 'Jane Smith',
     review: 'Great selection of cars and excellent customer support. I will definitely use their service again!',
     rating: 4,
-    image: 'https://example.com/jane.jpg', // Replace with actual image URL
+    image: img, // Replace with actual image URL
   },
   {
     id: 3,
     name: 'Alice Johnson',
     review: 'The best car rental experience I have ever had. Highly recommend!',
     rating: 5,
-    image: 'https://example.com/alice.jpg', // Replace with actual image URL
+    image: img, // Replace with actual image URL
   },
   // Add more testimonials as needed
 ];
@@ -36,7 +37,7 @@ const testimonials: Testimonial[] = [
 const Testimonial: React.FC = () => {
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <DefaultContainer>
         <h2 className="text-3xl font-bold text-center mb-12">Customer Testimonials</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
@@ -68,7 +69,7 @@ const Testimonial: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </DefaultContainer>
     </section>
   );
 };

@@ -59,36 +59,6 @@ export type TBookingState = {
   isCancel?: boolean;
 };
 
-export type TProduct = {
-  _id?: string;
-  name: string;
-  price: number;
-  stockQuantity: number;
-  description: string;
-  category: string;
-  ratings: number;
-  images: string[];
-  deleteImages?: string;
-};
-
-export type TCartsProps = {
-  _id?: string;
-  product: TProduct;
-  name: string;
-  price: number;
-  stockQuantity: number;
-  description: string;
-  category: string;
-  ratings: number;
-  images: string[];
-  quantity: number;
-};
-
-// Define the TProduct type
-export type TProductCart = {
-  price: number;
-  stockQuantity: number;
-};
 
 export type TUserState = {
   user: {name: string, email: string}

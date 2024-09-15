@@ -4,6 +4,7 @@ import {
   useGetAllBookingsQuery,
 } from "../../../redux/baseApi";
 import { TBooking } from "../../../interfaces";
+import DefaultContainer from "../../../components/DefaultContainer";
 
 const ManageReturnCars: React.FC = () => {
   const { data, isLoading } = useGetAllBookingsQuery(undefined);
@@ -27,8 +28,9 @@ const ManageReturnCars: React.FC = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 w-full">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="py-10 bg-gray-100 w-full">
+        <DefaultContainer>
+        <div className=" bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200">
           <h1 className="text-2xl font-semibold text-gray-800">
             Manage Bookings
@@ -139,6 +141,7 @@ const ManageReturnCars: React.FC = () => {
           </table>
         </div>
       </div>
+        </DefaultContainer>
     </div>
   );
 };

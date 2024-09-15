@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { setSearchParams } from "../../redux/features/search/searchSlice";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
+import DefaultContainer from "../../components/DefaultContainer";
 
 
 interface SearchFormInputs {
@@ -29,7 +30,9 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <div>
+      <DefaultContainer>
+      <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">Find Your Car</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className=" md:flex items-center space-y-4 md:space-y-0 md:space-x-4">
@@ -77,6 +80,8 @@ const Search: React.FC = () => {
           </button>
         </div>
       </form>
+    </div>
+      </DefaultContainer>
     </div>
   );
 };

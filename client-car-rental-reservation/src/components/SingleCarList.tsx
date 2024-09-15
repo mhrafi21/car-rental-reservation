@@ -2,7 +2,7 @@ import React from "react";
 import { TCar } from "../interfaces";
 import { Link } from "react-router-dom";
 
-const ProductsList: React.FC<{ product: TCar }> = ({ product }) => {
+const SingleCarList: React.FC<{ product: TCar }> = ({ product }) => {
 
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 flex flex-col">
@@ -32,4 +32,4 @@ const ProductsList: React.FC<{ product: TCar }> = ({ product }) => {
   );
 };
 
-export default ProductsList;
+export default SingleCarList;

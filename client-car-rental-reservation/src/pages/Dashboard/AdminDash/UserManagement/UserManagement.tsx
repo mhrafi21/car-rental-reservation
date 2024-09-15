@@ -5,6 +5,7 @@ import {
 } from "../../../../redux/baseApi";
 import { TUser } from "../../../../interfaces";
 import toast from "react-hot-toast";
+import DefaultContainer from "../../../../components/DefaultContainer";
 
 const UserManagement: React.FC = () => {
   // Fetch users and provide typings
@@ -59,6 +60,7 @@ const UserManagement: React.FC = () => {
 
   return (
     <div className="p-6 bg-gray-100 w-full">
+      <DefaultContainer>
       <div className="bg-white shadow-lg rounded-lg">
         <div className="px-6 py-4 border-b border-gray-200">
           <h1 className="text-2xl font-semibold text-gray-800">User Management</h1>
@@ -166,6 +168,7 @@ const UserManagement: React.FC = () => {
           </table>
         </div>
       </div>
+      </DefaultContainer>
     </div>
   );
 };

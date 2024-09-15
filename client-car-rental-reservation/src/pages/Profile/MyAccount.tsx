@@ -8,7 +8,7 @@ const MyAccount = () => {
 
 
   return (
-    <div>
+    <div className="py-10">
       <DefaultContainer>
         <h2 className="text-2xl font-semibold mb-6">User Dashboard</h2>
         <div className="mb-8">

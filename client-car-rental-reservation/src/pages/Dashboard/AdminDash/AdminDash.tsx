@@ -33,7 +33,7 @@ function AdminDash() {
       <div
         className={`sidebar bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:relative lg:translate-x-0 transition-transform duration-200 ease-in-out`}
+        } 2xl:relative 2xl:translate-x-0 transition-transform duration-200 ease-in-out`}
       >
         <Link to="/" className="text-white flex items-center space-x-2 px-4">
           <span className="text-2xl font-extrabold">MyCarRentals</span>
@@ -79,14 +79,19 @@ function AdminDash() {
       </div>
 
       {/* Content */}
-      <div className=" p-2">
+
+{
+  !isSidebarOpen &&
+      <div className=" absolute left-0 p-2">
         <button
-          className="toggle-button md:hidden bg-gray-800 text-white p-2 rounded-md"
+          className="toggle-button 2xl:hidden bg-gray-800 text-white p-2 rounded-md"
           onClick={toggleSidebar}
         >
-          {isSidebarOpen ? 'Close' : 'Menu'}
+         Menu
         </button>
       </div>
+}
+
     </div>
   );
 }

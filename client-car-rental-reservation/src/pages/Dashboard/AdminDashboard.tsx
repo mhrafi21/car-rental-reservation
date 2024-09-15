@@ -1,8 +1,8 @@
 import React from 'react';
 import { useGetAllBookingsQuery, useGetAllCarsQuery, useGetAllUsersQuery } from '../../redux/baseApi';
 import { TBooking, TCar } from '../../interfaces';
-import DefaultContainer from '../../components/DefaultContainer';
 import { FaCalendarCheck, FaCar, FaDollarSign, FaUsers } from 'react-icons/fa';
+import DefaultContainer from '../../components/DefaultContainer';
 
 interface OverviewStat {
   title: string;
@@ -49,8 +49,7 @@ const AdminDashboard: React.FC = () => {
   ];
 
   return (
-   <div>
-    <DefaultContainer>
+   <DefaultContainer>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6">
         {overviewStats?.map((stat, index) => (
           <div
@@ -65,8 +64,8 @@ const AdminDashboard: React.FC = () => {
           </div>
         ))}
       </div>
-    </DefaultContainer>
-   </div>
+
+   </DefaultContainer>
   );
 };
 
