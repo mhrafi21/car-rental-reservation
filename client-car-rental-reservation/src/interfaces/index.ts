@@ -16,14 +16,14 @@ export type TCar = {
 
 export type TUser = {
   _id?: string;
-  id: string;
-  name: string;
-  email: string;
+  id?: string;
+  name?: string;
+  email?: string;
   role?: "user" | "admin" | string;
   password?: string;
   confirmPassword?: string;
   terms?: boolean;
-  status: string;
+  status?: string;
 };
 
 export type TBooking = {
@@ -88,4 +88,10 @@ export type TCartsProps = {
 export type TProductCart = {
   price: number;
   stockQuantity: number;
+};
+
+export type TUserState = {
+  user: {name: string, email: string}
+  token: string
+ 
 };
