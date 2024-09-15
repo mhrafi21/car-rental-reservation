@@ -4,8 +4,6 @@ import { RootState } from "./store";
 interface UpdateCartResponse {
   success: boolean;
   cartId?: string;
-
-  // Add other properties as needed
 }
 
 // Update the UpdateCartMutationResult type definition
@@ -16,8 +14,6 @@ export type UpdateCartMutationResult =
   | {
       error: unknown;
     };
-
-/// https://backend-campers-shop.vercel.app/api/v1
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
@@ -38,6 +34,7 @@ export const baseApi = createApi({
   tagTypes: ["Cars", "Bookings"],
 
   endpoints: (builder) => ({
+
     createSignup: builder.mutation({
       query: (signupInfo) => {
         return {
@@ -55,16 +52,6 @@ export const baseApi = createApi({
           body: loginInfo,
         };
       },
-    }),
-    createProduct: builder.mutation({
-      query: (product) => {
-        return {
-          url: "/products/create-product",
-          method: "POST",
-          body: product,
-        };
-      },
-      invalidatesTags: [{ type: "Cars", id: "LIST" }],
     }),
 
     createCar: builder.mutation({
@@ -216,86 +203,12 @@ export const baseApi = createApi({
       },
       invalidatesTags: ({ id }) => [{ type: "Cars", id: id }],
     }),
-
-    deleteSingleProduct: builder.mutation({
-      query: (id) => {
-        return {
-          url: `/products/${id}`,
-          method: "DELETE",
-        };
-      },
-      invalidatesTags: ({ _id }) => [{ type: "Cars", id: _id }],
-    }),
-    createCartProduct: builder.mutation({
-      query: (product) => {
-        return {
-          url: "/carts/create-cart",
-          method: "POST",
-          body: product,
-        };
-      }
-    }),
-
-    getAllCarts: builder.query({
-      query: () => ({
-        url: "/carts",
-        method: "GET",
-      }),
-      providesTags: [{ type: "Carts", id: "LIST" }],
-    }),
-    deleteCart: builder.mutation({
-      query: (cartId) => ({
-        url: `/carts/${cartId}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: [{ type: "Carts" }],
-    }),
-    updateCart: builder.mutation({
-      query: (cart) => {
-        return {
-          url: `/carts`,
-          method: "PUT",
-          body: cart,
-        };
-      },
-      invalidatesTags: ({ _id }) => [{ type: "Carts", id: _id }],
-    }),
-    updateCartItem: builder.mutation<
-      void,
-      { productId: string; quantity: number }
-    >({
-      query: ({ productId, quantity }) => ({
-        url: `/carts/${productId}`,
-        method: "PATCH",
-        body: { quantity },
-      }),
-      invalidatesTags: [{ type: "Carts" }],
-    }),
-    removeCartItem: builder.mutation<void, string>({
-      query: (productId) => ({
-        url: `/cart/${productId}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: [{ type: "Carts" }],
-    }),
-    createOrderItem: builder.mutation({
-      query: (orderData) => {
-        console.log(orderData);
-        return {
-          url: `/orders/create-order`,
-          method: "POST",
-          body: orderData,
-        };
-      },
-      invalidatesTags: [{ type: "Cars" }],
-    }),
   }),
 });
 
 export const {
   useCreateSignupMutation,
   useCreateLoginMutation,
-  useCreateProductMutation,
   useCreateCarMutation,
   useDeleteSingleCarMutation,
   useGetSingleBookingsQuery,
@@ -310,13 +223,5 @@ export const {
   useGetSingleCarByIdQuery,
   useCreateBookingCarMutation,
   useGetBookingQuery,
-  useUpdateProductByIdMutation,
-  useDeleteSingleProductMutation,
-  useCreateCartProductMutation,
-  useGetAllCartsQuery,
-  useDeleteCartMutation,
-  useUpdateCartMutation,
-  useUpdateCartItemMutation,
-  useRemoveCartItemMutation,
-  useCreateOrderItemMutation,
+
 } = baseApi;

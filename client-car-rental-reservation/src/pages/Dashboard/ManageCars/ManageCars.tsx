@@ -175,8 +175,8 @@ const handleAddCar = () => {
                   <td className="py-4 px-6 text-sm text-gray-500">
                     {car.category}
                   </td>
-                  <td className="py-4 px-6 text-sm text-gray-500">
-                    {car.status}
+                  <td className="py-4 px-6 text-sm ">
+                    {car.status === 'available' ? <span className="text-green-600">{car.status}</span>  : <span className="text-red-600">{car.status}</span> }
                   </td>
                   <td className="py-4 px-6 text-sm text-gray-500">
                     {car.features.join(", ")}

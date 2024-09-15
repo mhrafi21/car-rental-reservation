@@ -6,7 +6,7 @@ import {
   setPriceRange,
   setSortBy,
   clearFilters,
-} from "../../redux/features/products/productsSlice";
+} from "../../redux/features/cars/carsSlice";
 import { RootState, AppDispatch } from "../../redux/store";
 import { useGetAllCarsQuery } from "../../redux/baseApi";
 import DefaultContainer from "../../components/DefaultContainer";
@@ -19,7 +19,7 @@ import { useAppSelector } from "../../redux/hooks";
 import {
   setCurrentPage,
   setTotalPages,
-} from "../../redux/features/products/paginationSlice";
+} from "../../redux/features/cars/paginationSlice";
 import Pagination from "../../components/Pagination";
 
 const CarsPage: React.FC = () => {

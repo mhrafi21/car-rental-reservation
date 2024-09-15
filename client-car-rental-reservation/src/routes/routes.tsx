@@ -3,12 +3,9 @@ import Root from "../layouts/Root";
 import ErrorPage from "../Error-page";
 import HomePage from "../pages/Home/HomePage";
 import AboutUsPage from "../pages/AboutUsPage";
-import ProductManagementPage from "../pages/ProductManagement/ProductManagementPage";
-import ProductDetailsPage from "../pages/productPage/ProductDetailsPage";
-import CheckoutPage from "../pages/CheckOutPage/CheckoutPage";
+import ProductDetailsPage from "../pages/productPage/CarDetailsPage";
 import SuccessPage from "../pages/SuccessPage";
 import CategoryProduct from "../pages/Home/CategoryProduct";
-import Cart from "../pages/Cart/Cart";
 import Signup from "../pages/SingupPage/Signup";
 import Signin from "../pages/SigninPage/Signin";
 import Booking from "../pages/Home/Booking/Booking";
@@ -43,11 +40,6 @@ const router = createBrowserRouter([
         path: "/product/:id",
         element: <ProductDetailsPage />,
       },
-
-      {
-        path: "/product-management",
-        element: <ProductManagementPage />,
-      },
       {
         path: "/booking",
         element: (
@@ -70,14 +62,6 @@ const router = createBrowserRouter([
       {
         path: "/category/:categoryName",
         element: <CategoryProduct></CategoryProduct>,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/checkout",
-        element: <CheckoutPage />,
       },
       {
         path: "/success",

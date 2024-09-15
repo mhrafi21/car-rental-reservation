@@ -8,7 +8,7 @@ import {
 
 
 const Dashboard: React.FC = () => {
-  const user: any = useAppSelector(useCurrentUser);
+  const user : any = useAppSelector(useCurrentUser);
 
   return (
     <div className="">{user?.role === "admin" ? <AdminDashboard /> : <UserDashboard />}</div>

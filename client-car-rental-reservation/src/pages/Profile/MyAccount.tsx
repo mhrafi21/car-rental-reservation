@@ -2,8 +2,11 @@ import DefaultContainer from "../../components/DefaultContainer";
 import { useAppSelector } from "../../redux/hooks";
 import { useCurrentUser } from "../../redux/features/auth/authSlice";
 
+
 const MyAccount = () => {
   const { name, email } = useAppSelector(useCurrentUser);
+
+
   return (
     <div>
       <DefaultContainer>

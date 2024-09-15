@@ -4,7 +4,7 @@ import ProductDetail from "./CarDetail";
 import DefaultContainer from "../../components/DefaultContainer";
 
 
-const ProductDetailsPage = () => {
+const CarDetailsPage = () => {
   const { id } = useParams();
 
   const { data, isLoading } = useGetSingleCarByIdQuery(id);
@@ -19,4 +19,4 @@ const ProductDetailsPage = () => {
   );
 };
 
-export default ProductDetailsPage;
+export default CarDetailsPage;

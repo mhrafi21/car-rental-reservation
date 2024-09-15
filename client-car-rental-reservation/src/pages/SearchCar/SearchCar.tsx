@@ -12,17 +12,12 @@ const SearchCar: React.FC = () => {
     (state: RootState) => state.search
   );
 
-  console.log(location, date, status);
-
   const { data: cars, isLoading } = useGetAllCarsQuery({
     location: location,
     date: date,
     status: status,
   });
 
-  console.log(cars);
-
-  
   return (
     <div>
       <DefaultContainer>

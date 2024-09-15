@@ -12,8 +12,8 @@ const initialState: TBookingState = {
   phone: "",
   license: "",
   nid: "",
-  gps: "",
-  childSeat: "",
+  gps: false,
+  childSeat: false,
 };
 
 const confirmBookingSlice = createSlice({

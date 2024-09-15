@@ -19,21 +19,19 @@ const Signin: React.FC = () => {
   const [createLogin] = useCreateLoginMutation(undefined);
   const dispatch = useAppDispatch();
 
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignInFormInputs>();
   const onSubmit: SubmitHandler<SignInFormInputs> = async (data) => {
-    const {success, token} = await createLogin(data).unwrap();
+    const { success, token } = await createLogin(data).unwrap();
     if (success === true) {
-      const user = verifyToken(token)
-      console.log(user);
+      const user = verifyToken(token);
       dispatch(setUser({ user: user, token: token }));
       toast.success("Logged in successfully");
-      navigate(location?.state ? location?.state : "/dashboard")
-    }else{
+      navigate(location?.state ? location?.state : "/dashboard");
+    } else {
       toast.error("Invalid email or password");
     }
   };

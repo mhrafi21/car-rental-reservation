@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./baseApi";
-import productsReducer from "../redux/features/products/productsSlice";
-import cartReducer from "../redux/features/products/cartSlice";
-import paginationReducer from "../redux/features/products/paginationSlice";
+import productsReducer from "./features/cars/carsSlice.ts";
+import paginationReducer from "./features/cars/paginationSlice.ts";
 import authReducer from "../redux/features/auth/authSlice";
 import storage from "redux-persist/lib/storage";
 import searchReducer from "../redux/features/search/searchSlice.ts"
@@ -30,7 +29,6 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     products: productsReducer,
-    cart: cartReducer,
     pagination: paginationReducer,
     auth: persistedAuthReducer,
     search: searchReducer,
