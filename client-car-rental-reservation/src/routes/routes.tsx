@@ -22,6 +22,7 @@ import CarsPage from "../pages/productPage/CarsPage";
 import SearchCar from "../pages/SearchCar/SearchCar";
 import ManageUserBooking from "../pages/Dashboard/ManageUserBooking/ManageUserBooking";
 import BookingConfirmation from "../pages/Home/Booking/ConfirmBooking/ConfirmBooking";
+import OverViewStats from "../pages/Dashboard/AdminDash/OverViewsStats/OverViewStats";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -88,12 +89,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardRoot></DashboardRoot>,
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/dashboard",
-        element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
+        element: <OverViewStats />,
       },
       {
         path: "/dashboard/manage-cars",

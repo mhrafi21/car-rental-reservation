@@ -87,7 +87,7 @@ const BookingManagement: React.FC = () => {
   const pastBookings = data?.data.filter((booking: TBookingState) => booking?.totalCost !== 0);
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="">
       <h1 className="text-3xl font-bold mb-6">Booking Management</h1>
       
       {/* Tabs for switching between upcoming and past bookings */}
