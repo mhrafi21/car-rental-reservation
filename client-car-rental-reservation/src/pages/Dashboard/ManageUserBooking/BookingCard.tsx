@@ -1,5 +1,7 @@
 import React from "react";
 import { TBookingState } from "../../../interfaces";
+import { useCreatePaymentMutation } from "../../../redux/baseApi";
+import { useNavigate } from "react-router-dom";
 
 interface BookingCardProps {
   booking: TBookingState;
@@ -12,6 +14,23 @@ const BookingCard: React.FC<BookingCardProps> = ({
   onModify,
   onCancel,
 }) => {
+
+const navigate = useNavigate();
+  const [makePayment, {isLoading}] = useCreatePaymentMutation(undefined);
+
+
+
+  const handleBookingPayment = async(id : string) => {
+      const res = await makePayment({bookingId: id}).unwrap();
+      console.log(res.data);
+      if(res?.data?.result === "true"){
+        window.location.href = res?.data?.payment_url;
+      }
+  }
+
+
+
+
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-4">
       <div className="flex justify-between">
@@ -50,17 +69,29 @@ const BookingCard: React.FC<BookingCardProps> = ({
 
       <div className="flex justify-between">
         <p className="mt-2 text-gray-600">
-          <strong>Total Cost:</strong> ${booking?.totalCost?.toFixed(2)}
+          <strong>Total Cost:</strong> ${booking?.totalCost?.toFixed(2)} (<span>{booking?.paymentStatus == "paid" ? <span className="text-green-600 font-semibold">{booking?.paymentStatus}</span> : <span className="text-red-600 font-semibold">{booking?.paymentStatus}</span>}</span>)
         </p>
-        <button
-        title="After return the car total will be counted"
-          className={`py-2 px-4 bg-green-500 text-white rounded ${
+        {
+
+          !isLoading ? <button
+          onClick = {() => handleBookingPayment(booking._id as string)}
+          title="After return the car total will be counted"
+            className={`py-2 px-4 bg-green-500 text-white rounded ${
+              booking?.totalCost === 0  ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={booking?.totalCost === 0 }
+          >
+            Pay Now
+          </button> : <button
+          className={`py-2 px-4 opacity-50   bg-green-500 text-white rounded ${
             booking?.totalCost === 0 ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={booking?.totalCost === 0}
         >
           Pay Now
         </button>
+        }
+        
       </div>
 
       <div className="mt-4 flex space-x-4">

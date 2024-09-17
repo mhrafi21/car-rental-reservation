@@ -16,6 +16,11 @@ const bookingSchema = new Schema<TBooking>(
       type: Schema.Types.ObjectId,
       ref: 'Car',
     },
+    paymentStatus: {
+      type: String,
+      enum: ['pending', 'paid', 'cancelled'],
+      default: 'pending',
+    },
     startTime: {
       type: String,
       required: true,

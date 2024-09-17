@@ -10,4 +10,9 @@ export default {
   NODE_ENV: process.env.NODE_DEV,
   default_password: process.env.DEFAULT_PASS,
   JWT_SECRET: process.env.JWT_ACCESS_SECRET,
+  PAYMENT_URL: process.env.PAYMENT_URL,
+  STORE_ID: process.env.STORE_ID,
+  SIGNATURE_KEY: process.env.SIGNATURE_KEY,
+  VERIFY_PAYMENT_URL: process.env.VERIFY_PAYMENT_URL
+
 }

@@ -193,6 +193,8 @@ export const baseApi = createApi({
 
     // update user status and role
 
+    
+
     updateUserStatusOrRole: builder.mutation({
       query: ({ id, role, status }) => {
         return {
@@ -203,6 +205,20 @@ export const baseApi = createApi({
       },
       invalidatesTags: ({ id }) => [{ type: "Cars", id: id }],
     }),
+
+    createPayment: builder.mutation({
+      query: ({bookingId}) => {
+        return {
+          url: `/payment`,
+          method: "POST",
+          body: {bookingId: bookingId}
+        };
+      },
+      invalidatesTags: ({ id }) => [{ type: "Cars", id: id }],
+    }),
+    
+
+
   }),
 });
 
@@ -223,5 +239,6 @@ export const {
   useGetSingleCarByIdQuery,
   useCreateBookingCarMutation,
   useGetBookingQuery,
+  useCreatePaymentMutation,
 
 } = baseApi;

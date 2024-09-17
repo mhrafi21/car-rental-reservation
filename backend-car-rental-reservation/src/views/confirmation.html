@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Confirmation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl w-full bg-white shadow-md rounded-lg p-8">
+      <!-- Confirmation Header -->
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900">Payment Confirmation</h2>
+        <p class="mt-2 text-lg text-gray-600">Thank you for your purchase!</p>
+      </div>
+
+      <!-- Payment Details Section -->
+      <div class="mt-8 space-y-6">
+        <!-- Payment Summary -->
+        <div class="bg-gray-50 p-4 rounded-lg shadow-inner">
+          <h3 class="text-xl font-semibold text-gray-700">Payment Receipt</h3>
+          <p class="text-sm text-gray-500">Transaction ID: <span class="font-semibold">1234567890ABCDEF</span></p>
+
+          <div class="mt-4">
+            <!-- Item Details -->
+            <div class="flex justify-between border-b border-gray-200 py-2">
+              <p class="text-sm text-gray-600">Item</p>
+              <p class="text-sm text-gray-600">Amount</p>
+            </div>
+            <div class="flex justify-between py-2">
+              <p class="text-gray-900 font-semibold">Car Rental - SUV</p>
+              <p class="text-gray-900 font-semibold">$150.00</p>
+            </div>
+
+            <!-- Additional Charges -->
+            <div class="flex justify-between py-2">
+              <p class="text-gray-600">GPS</p>
+              <p class="text-gray-900">$15.00</p>
+            </div>
+            <div class="flex justify-between py-2">
+              <p class="text-gray-600">Child Seat</p>
+              <p class="text-gray-900">$10.00</p>
+            </div>
+
+            <!-- Subtotal -->
+            <div class="flex justify-between border-t border-gray-200 pt-4">
+              <p class="text-gray-900 font-bold">Subtotal</p>
+              <p class="text-gray-900 font-bold">$175.00</p>
+            </div>
+
+            <!-- Total -->
+            <div class="flex justify-between py-2 text-lg font-bold text-gray-900">
+              <p>Total</p>
+              <p>$192.50</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing Information -->
+        <div class="bg-gray-50 p-4 rounded-lg shadow-inner mt-6">
+          <h3 class="text-xl font-semibold text-gray-700">Billing Information</h3>
+          <p class="text-sm text-gray-500">Paid using: <span class="font-semibold">Credit Card (**** 1234)</span></p>
+          <p class="text-sm text-gray-500 mt-1">Billing Address: <span class="font-semibold">123 Main Street, City, Country</span></p>
+        </div>
+      </div>
+
+      <!-- Button to Go Back to Dashboard -->
+      <div class="mt-6 text-center">
+        <a href="http://localhost:5173/dashboard/my-bookings" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg">
+          Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

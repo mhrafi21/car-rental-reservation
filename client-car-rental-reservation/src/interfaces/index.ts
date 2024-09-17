@@ -57,8 +57,8 @@ export type TBookingState = {
   totalCost?: number;
   approved?: boolean;
   isCancel?: boolean;
+  paymentStatus?: 'pending' | 'paid' | 'cancelled' | string
 };
-
 
 export type TUserState = {
   user: {name: string, email: string}

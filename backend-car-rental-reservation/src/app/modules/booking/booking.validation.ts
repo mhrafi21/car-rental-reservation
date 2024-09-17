@@ -4,7 +4,8 @@ const bookingValidationSchema = z.object({
   body: z.object({
     date: z.string(), // Validates a non-empty string
     user: z.string().optional(), // Assuming ObjectId is represented as a string, and it's optional
-    car: z.string().optional(),  // Same as user
+    car: z.string().optional(),
+    paymentStatus: z.enum(['pending', 'paid', 'cancelled']).default('pending').optional(),  // Same as user
     startTime: z.string(), // Validates a non-empty string
     endTime: z.string().optional(), // Optional endTime, can be null
     totalCost: z.number().min(0).default(0), // Validates totalCost as a number and sets a default value

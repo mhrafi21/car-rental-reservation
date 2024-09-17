@@ -8,7 +8,7 @@ export type TBooking = {
   car: Types.ObjectId
   startTime: string
   endTime: string | null
-
+  paymentStatus: 'pending' | 'paid' | 'cancelled'
   name: string
   address: string
   phone: string
