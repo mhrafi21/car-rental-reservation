@@ -28,56 +28,56 @@ const ManageReturnCars: React.FC = () => {
   };
 
   return (
-    <div className="py-10 bg-gray-100 w-full">
-        <DefaultContainer>
-        <div className=" bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="py-10 bg-gray-100 dark:bg-gray-700 w-full">
+
+        <div className=" bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200">
-          <h1 className="text-2xl font-semibold text-gray-800">
+          <h1 className="text-2xl font-semibold dark:text-white text-gray-800">
             Manage Bookings
           </h1>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-50 dark:bg-gray-600">
               <tr>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Customer
                 </th>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Car Model
                 </th>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Booking Date
                 </th>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Return Date
                 </th>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Total Cost
                 </th>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Status
                 </th>
-                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-700 divide-y divide-gray-200">
               {isLoading && <div>Loading...</div>}
               {data?.data &&
                 data?.data?.map((booking: TBooking) => (
                   <tr key={booking._id}>
-                    <td className="py-4 px-6 text-sm font-medium text-gray-900">
+                    <td className="py-4 px-6 text-sm dark:text-white font-medium text-gray-900">
                       {booking?.user?.name}
                     </td>
-                    <td className="py-4 px-6 text-sm text-gray-500">
+                    <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                       {booking?.car?.name}
                     </td>
-                    <td className="py-4 px-6 text-sm text-gray-500">
+                    <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                       {booking?.date} ({booking?.startTime})
                     </td>
-                    <td className="py-4 px-6 text-sm text-gray-500">
+                    <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                       {editBookingId === booking._id ? (
                         <input
                           type="time"
@@ -89,10 +89,10 @@ const ManageReturnCars: React.FC = () => {
                         booking?.endTime
                       )}
                     </td>
-                    <td className="py-4 px-6 text-sm text-gray-500">
+                    <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                       $ {booking?.totalCost}
                     </td>
-                    <td className="py-4 px-6 text-sm text-gray-500">
+                    <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                       <p
                         className={`inline-flex px-2 py-1 font-semibold leading-5 rounded-full text-red-600`}
                       >
@@ -141,7 +141,7 @@ const ManageReturnCars: React.FC = () => {
           </table>
         </div>
       </div>
-        </DefaultContainer>
+
     </div>
   );
 };

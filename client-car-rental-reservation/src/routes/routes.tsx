@@ -13,7 +13,6 @@ import ProtectedRoutes from "../layouts/ProtectedRoutes";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyAccount from "../pages/Profile/MyAccount";
 import ManageCars from "../pages/Dashboard/ManageCars/ManageCars";
-import DashboardRoot from "../layouts/DashboardRoot";
 import ManageBooking from "../pages/Dashboard/ManageBooking/ManageBooking";
 import ManageReturnCars from "../pages/Dashboard/ManageReturnCars/ManageReturnCars";
 import UserManagement from "../pages/Dashboard/AdminDash/UserManagement/UserManagement";

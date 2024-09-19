@@ -10,12 +10,15 @@ const CarDetailsPage = () => {
   const { data, isLoading } = useGetSingleCarByIdQuery(id);
   console.log(data);
   return (
+    <div className="dark:bg-black dark:text-white">
+
     <DefaultContainer>
       {isLoading && <div>Loading...</div>}
       <div>
             <ProductDetail key={Math.random()} product={data?.data}/>
       </div>
     </DefaultContainer>
+    </div>
   );
 };
 

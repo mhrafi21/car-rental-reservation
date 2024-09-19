@@ -100,7 +100,6 @@ const Navbar: React.FC = () => {
               <Link to="/contact" className="hover:text-gray-400">
                 Contact
               </Link>
-            </div>
             <div>
               <select
                 value={theme}
@@ -111,6 +110,7 @@ const Navbar: React.FC = () => {
                 <option value="dark">Dark Mode</option>
                 <option value="system">System Mode</option>
               </select>
+            </div>
             </div>
             {!token ? (
               <Link to={"/signin"}>Singin/Signup</Link>
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
                       className="fixed inset-0 bg-black opacity-50 z-40"
                       onClick={closeDropdown}
                     ></div>
-                    <div className="absolute right-0 mt-48 w-48 z-50 bg-white text-black rounded-md shadow-lg py-2">
+                    <div className="absolute right-0 mt-48 w-48 z-50 bg-white dark:bg-gray-700 dark:text-white text-black rounded-md shadow-lg py-2">
                       <Link
                         to="/dashboard"
                         className="block px-4 py-2 hover:bg-gray-200"
@@ -190,6 +190,17 @@ const Navbar: React.FC = () => {
               >
                 Contact
               </Link>
+              <div>
+              <select
+                value={theme}
+                onChange={handleThemeChange}
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded text-gray-800 dark:text-white"
+              >
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+                <option value="system">System Mode</option>
+              </select>
+            </div>
               <div className="border-t border-gray-600 mt-2">
                 <Link
                   to="/dashboard"

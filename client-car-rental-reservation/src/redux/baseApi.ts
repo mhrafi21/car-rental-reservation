@@ -1,20 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "./store";
 
-interface UpdateCartResponse {
-  success: boolean;
-  cartId?: string;
-}
-
-// Update the UpdateCartMutationResult type definition
-export type UpdateCartMutationResult =
-  | {
-      data: UpdateCartResponse;
-    }
-  | {
-      error: unknown;
-    };
-
+// vercel url: https://server-car-rental-reservation.vercel.app
+//localhost: http://localhost:5000
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
@@ -23,7 +11,6 @@ export const baseApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const state = getState() as RootState;
       const token = state.auth.token;
-
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
@@ -191,6 +178,9 @@ export const baseApi = createApi({
       providesTags: () => [{ type: "Cars" }],
     }),
 
+    // get single User 
+
+
     // update user status and role
 
     
@@ -216,9 +206,19 @@ export const baseApi = createApi({
       },
       invalidatesTags: ({ id }) => [{ type: "Cars", id: id }],
     }),
-    
 
+    // update profile 
 
+    updateProfile: builder.mutation({
+      query: (upateProfileInfo) => {
+       return {
+        method: "PATCH",
+        url: "/auth/users/profile",
+        body: upateProfileInfo,
+       }
+      }
+    })
+  
   }),
 });
 
@@ -240,5 +240,6 @@ export const {
   useCreateBookingCarMutation,
   useGetBookingQuery,
   useCreatePaymentMutation,
+  useUpdateProfileMutation,
 
 } = baseApi;

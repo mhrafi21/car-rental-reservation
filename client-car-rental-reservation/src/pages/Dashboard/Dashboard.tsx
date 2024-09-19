@@ -13,7 +13,7 @@ const Dashboard = () => {
   const user: TUser = useAppSelector(useCurrentUser);
 
   return (
-    <div>
+    <div >
       <Header />
       <div>
 
@@ -54,7 +54,7 @@ const Dashboard = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 bg-gray-100 min-h-screen p-6">
+            <div className="flex-1 bg-gray-100 dark:bg-black min-h-screen p-6">
               {/* Navbar for Mobile */}
               <div className="lg:hidden mb-4 flex justify-between items-center">
                 <button

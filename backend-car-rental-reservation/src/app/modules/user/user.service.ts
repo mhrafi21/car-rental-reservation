@@ -10,7 +10,6 @@ const createUserIntoDB = async (payload: TUser) => {
 
   const isAlreadyRegister = await User.findOne({ email: payload?.email })
 
-
   if (!isAlreadyRegister) {
     const result = await User.create(payload)
     return result
@@ -60,17 +59,20 @@ const updateStatusIntoDB = async (id: string, payload: TUser) => {
       },
     },
     { new: true },
-  ).select("name role status email")
+  ).select('name role status email')
 
   return result
 }
 
-
+const updateUserProfileIntoDB = async (id: string, payload: string) => {
+  const result = await User.findOneAndUpdate({ email: id }, { name: payload })
+  return result;
+}
 
 export {
   createUserIntoDB,
   loginUserFromDB,
   getAllUsersFromDB,
   updateStatusIntoDB,
+  updateUserProfileIntoDB,
 }
-

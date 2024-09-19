@@ -92,13 +92,13 @@ const CarTable: React.FC = () => {
 
   return (
     <div className="py-10">
-      <DefaultContainer>
+
         {" "}
         <div className=" bg-gray-100">
           {isLoading && <div>Loading...</div>}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h1 className="text-2xl font-semibold text-gray-800">
+              <h1 className="text-2xl font-semibold dark:text-white text-gray-800">
                 Car Management
               </h1>
               <button
@@ -110,44 +110,44 @@ const CarTable: React.FC = () => {
             </div>
             <div className="overflow-x-auto flex-none">
               <table className=" divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-50 dark:bg-gray-600 ">
                   <tr>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs  font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Image
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Name
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Description
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Color
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Electric
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Category
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Features
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Price/Hour
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Reviews
                     </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-700 divide-y divide-gray-200">
                   {data?.data?.map((car: TCar) => (
                     <tr key={car._id}>
                       <td className="py-4 px-6 text-sm">
@@ -157,19 +157,19 @@ const CarTable: React.FC = () => {
                           alt={car.name}
                         />
                       </td>
-                      <td className="py-4 px-6 text-sm font-medium text-gray-900">
+                      <td className="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">
                         {car.name}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         {car.description.slice(0, 20) + "..."}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         {car.color}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         {car.isElectric ? "Yes" : "No"}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         {car.category}
                       </td>
                       <td className="py-4 px-6 text-sm ">
@@ -179,13 +179,13 @@ const CarTable: React.FC = () => {
                           <span className="text-red-600">{car.status}</span>
                         )}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         {car.features.join(", ")}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         ${car.pricePerHour}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
+                      <td className="py-4 px-6 text-sm text-gray-500 dark:text-white">
                         {car.reviews}
                       </td>
                       <td className="py-4 text-sm">
@@ -349,7 +349,7 @@ const CarTable: React.FC = () => {
             />
           )}
         </div>
-      </DefaultContainer>
+
     </div>
   );
 };

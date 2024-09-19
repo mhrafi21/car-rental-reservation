@@ -11,16 +11,15 @@ import { RootState, AppDispatch } from "../../redux/store";
 import { useGetAllCarsQuery } from "../../redux/baseApi";
 import DefaultContainer from "../../components/DefaultContainer";
 import { TCar } from "../../interfaces";
-import ProductsList from "../../components/SingleCarList";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaSearch } from "react-icons/fa";
 import { useAppSelector } from "../../redux/hooks";
 import {
-  setCurrentPage,
   setTotalPages,
 } from "../../redux/features/cars/paginationSlice";
-import Pagination from "../../components/Pagination";
+import SingleCarList from "../../components/SingleCarList";
 
 const CarsPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -36,7 +35,7 @@ const CarsPage: React.FC = () => {
   );
   const sortBy = useSelector((state: RootState) => state.products.sortBy);
 
-  const { currentPage, totalPages } = useAppSelector(
+  const { currentPage } = useAppSelector(
     (state: RootState) => state.pagination
   );
 
@@ -55,10 +54,6 @@ const CarsPage: React.FC = () => {
       dispatch(setTotalPages(products?.data?.totalPages));
     }
   }, [products, dispatch]);
-
-  const handlePageChange = (page: number) => {
-    dispatch(setCurrentPage(page));
-  };
 
   const handleSearchChange = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -121,8 +116,6 @@ const CarsPage: React.FC = () => {
     AOS.init({ once: true }); // Initialize once
   }, []);
 
-  console.log(products)
-
   return (
     <div className="bg-white  dark:bg-gray-800 shadow">
       <DefaultContainer>
@@ -137,7 +130,7 @@ const CarsPage: React.FC = () => {
                   type="text"
                   placeholder="Search products..."
                   name="search"
-                  className="p-2.5 pl-16 w-full border  border-gray-300 rounded-md mr-4 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="p-2.5 pl-16 w-full border  border-gray-300 dark:bg-gray-700 dark:text-white rounded-md mr-4 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <div className="absolute h-full right-0 top-0 bottom-0">
                   <button
@@ -159,7 +152,7 @@ const CarsPage: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={handleCategoryChange}
-              className="p-2.5 border border-gray-300 rounded-md mr-4 mb-2 md:mb-0 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-2.5 border border-gray-300 rounded-md mr-4 mb-2 md:mb-0 dark:bg-gray-700 dark:text-white hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Categories</option>
               <option value="sedan">sedan</option>
@@ -171,7 +164,7 @@ const CarsPage: React.FC = () => {
             <select
               value={`${priceRange.min}-${priceRange.max}`}
               onChange={handlePriceRangeChange}
-              className="p-2.5 border border-gray-300 rounded-md mr-4 mb-2 md:mb-0 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-2.5 border border-gray-300 dark:bg-gray-700 dark:text-white rounded-md mr-4 mb-2 md:mb-0 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="0-12000000">Select Price Range</option>
               <option value="0-50">Up to $50</option>
@@ -188,7 +181,7 @@ const CarsPage: React.FC = () => {
             <select
               value={sortBy}
               onChange={handleSortChange}
-              className="p-2.5 border border-gray-300 rounded-md mr-4 mb-2 md:mb-0 hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-2.5 border border-gray-300 rounded-md mr-4 mb-2 md:mb-0 dark:bg-gray-700 dark:text-white hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="asc">Price Low to High</option>
               <option value="desc">Price High to Low</option>
@@ -197,7 +190,7 @@ const CarsPage: React.FC = () => {
             {/* Clear Filters */}
             <button
               onClick={handleClearFilters}
-              className="p-2.5 bg-gray-800 text-white rounded-md hover:bg-gray-900 transition duration-200"
+              className="p-2.5 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-900 transition duration-200"
             >
               Clear Filters
             </button>
@@ -210,19 +203,14 @@ const CarsPage: React.FC = () => {
               <div>No Result Found!</div>
             ) : (
               products?.data?.map((product: TCar, index : number) => (
-                <ProductsList
+                <SingleCarList
                   key={index}
                   product={product}
-                ></ProductsList>
+                ></SingleCarList>
               ))
             )}
           </div>
         </div>
-        <Pagination
-          totalPages={totalPages}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        ></Pagination>
       </DefaultContainer>
     </div>
   );

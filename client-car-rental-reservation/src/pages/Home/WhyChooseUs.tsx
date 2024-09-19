@@ -33,15 +33,15 @@ const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-16 dark:bg-black">
       <DefaultContainer>
         <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-gray-100 p-8 rounded-lg shadow-md text-center">
+            <div key={index} className="bg-gray-100 dark:bg-gray-700 dark:text-white p-8 rounded-lg shadow-md text-center">
               <div className="mb-4 flex justify-center">{feature.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-700">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">{feature.title}</h3>
+              <p className="text-gray-700 dark:text-white">{feature.description}</p>
             </div>
           ))}
         </div>

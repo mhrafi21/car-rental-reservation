@@ -1,4 +1,4 @@
-import { createUserIntoDB, getAllUsersFromDB, loginUserFromDB, updateStatusIntoDB } from './user.service'
+import { createUserIntoDB, getAllUsersFromDB, loginUserFromDB, updateStatusIntoDB, updateUserProfileIntoDB } from './user.service'
 import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
 
@@ -58,9 +58,23 @@ const payload = req.body
   })
 })
 
+const updateUserProfile = catchAsync(async(req,res) => {
+  const {id, name} = req.body;
+  console.log(id,name);
+  const result = await updateUserProfileIntoDB(id as string, name as string);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'User Profile updated',
+    data: result,
+  })
+})
+
 export const UserController = {
   createUser,
   loginUser,
   getAllUser,
-  updateRoleOrStatus
+  updateRoleOrStatus,
+  updateUserProfile
 }

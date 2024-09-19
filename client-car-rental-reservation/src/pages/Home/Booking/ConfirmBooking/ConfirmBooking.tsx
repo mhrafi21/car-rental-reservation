@@ -33,9 +33,9 @@ const BookingConfirmation: React.FC = () => {
   };
 
   return (
-    <div className="py-10">
+    <div className="py-10 dark:bg-black">
       <DefaultContainer>
-        <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+        <div className="max-w-3xl mx-auto p-6 bg-white dark:text-white dark:bg-gray-700 shadow-lg rounded-lg">
           <h2 className="text-2xl font-bold mb-4">Booking Confirmation</h2>
 
           <div className="mb-6">

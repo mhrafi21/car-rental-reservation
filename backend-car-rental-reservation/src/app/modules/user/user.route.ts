@@ -13,8 +13,9 @@ router.post(
 
 router.post('/signin', UserController.loginUser)
 
-router.get('/users', UserController.getAllUser)
-
+router.get('/users', UserController.getAllUser);
 router.put("/users/:id", UserController.updateRoleOrStatus);
+
+router.patch("/users/profile", UserController.updateUserProfile);
 
 export const userRouter = router

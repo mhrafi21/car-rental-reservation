@@ -4,7 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { setSearchParams } from "../../redux/features/search/searchSlice";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
-import DefaultContainer from "../../components/DefaultContainer";
 
 
 interface SearchFormInputs {
@@ -31,16 +30,16 @@ const Search: React.FC = () => {
 
   return (
     <div>
-      <DefaultContainer>
-      <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">Find Your Car</h2>
+
+      <div className="max-w-2xl mx-auto dark:bg-gray-700 bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl dark:text-white font-semibold text-center text-gray-800 mb-4">Find Your Car</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className=" md:flex items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label
          
               htmlFor="location"
-              className="block text-sm font-medium text-gray-800"
+              className="block text-sm dark:text-white font-medium text-gray-800"
             >
               Location
             </label>
@@ -59,7 +58,7 @@ const Search: React.FC = () => {
           <div className="flex-1">
             <label
               htmlFor="date"
-              className="block text-sm font-medium text-gray-800"
+              className="block dark:text-white text-sm font-medium text-gray-800"
             >
               Start Date
             </label>
@@ -74,14 +73,14 @@ const Search: React.FC = () => {
           
           <button
             type="submit"
-            className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:from-blue-600 hover:to-indigo-700 transition duration-300 ease-in-out"
+            className="bg-blue-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-600 transition duration-300 ease-in-out"
           >
             Search
           </button>
         </div>
       </form>
     </div>
-      </DefaultContainer>
+
     </div>
   );
 };

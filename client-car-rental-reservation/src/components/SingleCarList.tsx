@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SingleCarList: React.FC<{ product: TCar }> = ({ product }) => {
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 flex flex-col">
+    <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 flex flex-col">
       {/* Product Image */}
       <img
         className="w-full h-64 object-cover object-center"
@@ -14,11 +14,11 @@ const SingleCarList: React.FC<{ product: TCar }> = ({ product }) => {
       />
       <div className="px-6 py-4 flex flex-col flex-grow">
         {/* Product Name */}
-        <div className="font-bold text-xl mb-2 text-gray-800">{product.name}</div>
+        <div className="font-bold text-xl mb-2 dark:text-white text-gray-800">{product.name}</div>
         {/* Product Category */}
-        <p className="text-gray-600 text-base mb-2">{product.category}</p>
+        <p className="text-gray-600 text-base dark:text-white  mb-2">{product.category}</p>
         {/* Product Price */}
-        <p className="text-gray-900 text-lg font-semibold mb-2">${product.pricePerHour}/hour</p>
+        <p className="text-gray-900 text-lg dark:text-white font-semibold mb-2">${product.pricePerHour}/hour</p>
         <div className="mt-auto">
           {/* Product Details Button */}
           <Link to={`/product/${product._id}`}>

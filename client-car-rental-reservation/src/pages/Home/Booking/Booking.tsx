@@ -44,19 +44,19 @@ const CarDetailsPage: React.FC = () => {
   };
 
   return (
-    <div className="py-10">
+    <div className="py-10 dark:bg-black">
       <DefaultContainer>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* Car Details Section */}
-          <div className="car-details bg-white shadow-lg rounded-md p-6 mb-6">
-            <h1 className="text-4xl font-bold mb-4">{booking?.name}</h1>
+          <div className="car-details bg-white dark:bg-gray-700 shadow-lg  rounded-md p-6 mb-6">
+            <h1 className="text-4xl font-bold mb-4 dark:text-white">{booking?.name}</h1>
 
-            <p className="text-gray-700 text-lg mb-6">{booking?.description}</p>
+            <p className="text-gray-700 dark:text-white text-lg mb-6">{booking?.description}</p>
             <div className="features mb-6">
-              <h2 className="text-xl font-semibold mb-2">Features:</h2>
+              <h2 className="text-xl font-semibold mb-2 dark:text-white">Features:</h2>
               <ul className="list-disc list-inside">
                 {booking?.features?.map((feature, index) => (
-                  <li key={index} className="text-gray-600 text-md">
+                  <li key={index} className="text-gray-600 dark:text-white text-md">
                     {feature}
                   </li>
                 ))}
@@ -65,22 +65,22 @@ const CarDetailsPage: React.FC = () => {
           </div>
 
           {/* Booking Form */}
-          <div className="booking-form bg-white shadow-lg rounded-md p-6">
-            <h2 className="text-2xl font-bold mb-4">Booking Form</h2>
+          <div className="booking-form bg-white dark:bg-gray-700 shadow-lg rounded-md p-6">
+            <h2 className="text-2xl font-bold mb-4 dark:text-white">Booking Form</h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Personal Details */}
               <div>
                 <label
                   htmlFor="nid"
-                  className="block text-gray-700 font-medium"
+                  className="block text-gray-700 dark:text-white font-medium"
                 >
                   NID/Passport
                 </label>
                 <input
                   type="text"
                   id="nid"
-                  className="w-full border-gray-300 rounded-md p-3 mt-1"
+                  className="w-full border-gray-300 border rounded-md dark:bg-gray-700 dark:text-white p-3 mt-1"
                   {...register("nid", { required: true })}
                 />
                 {errors.nid && (
@@ -93,14 +93,14 @@ const CarDetailsPage: React.FC = () => {
               <div>
                 <label
                   htmlFor="license"
-                  className="block text-gray-700 font-medium"
+                  className="block text-gray-700  dark:text-white font-medium"
                 >
                   Driving License
                 </label>
                 <input
                   type="text"
                   id="license"
-                  className="w-full border-gray-300 rounded-md p-3 mt-1"
+                  className="w-full border-gray-300 border dark:bg-gray-700 dark:text-white rounded-md p-3 mt-1"
                   {...register("license", { required: true })}
                 />
                 {errors.license && (
@@ -112,19 +112,19 @@ const CarDetailsPage: React.FC = () => {
 
               {/* Payment Information */}
               <div className="payment-section">
-                <h3 className="text-xl font-semibold">Payment Information</h3>
+                <h3 className="text-xl font-semibold  dark:text-white">Payment Information</h3>
 
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-gray-700 font-medium mt-3"
+                    className="block text-gray-700  dark:text-white font-medium mt-3"
                   >
                  Name
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className="w-full border-gray-300 rounded-md p-3 mt-1"
+                    className="w-full border-gray-300 border dark:bg-gray-700 dark:text-white rounded-md p-3 mt-1"
                     {...register("name", {
                       required: true,
                 
@@ -141,14 +141,14 @@ const CarDetailsPage: React.FC = () => {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-gray-700 font-medium"
+                      className="block text-gray-700  dark:text-white font-medium"
                     >
                     Phone Number
                     </label>
                     <input
                       type="tel"
                       id="phone"
-                      className="w-full border-gray-300 rounded-md p-3 mt-1"
+                      className="w-full border-gray-300 border dark:bg-gray-700 dark:text-white rounded-md p-3 mt-1"
                       {...register("phone", {
                         required: true,
                       })}
@@ -163,13 +163,13 @@ const CarDetailsPage: React.FC = () => {
                   <div>
                     <label
                       htmlFor="Address"
-                      className="block text-gray-700 font-medium"
+                      className="block dark:text-white text-gray-700 font-medium"
                     >
                     Address
                     </label>
                     <textarea
                       id="address"
-                      className="w-full border-gray-300 rounded-md p-3 mt-1"
+                      className="w-full border-gray-300 border dark:bg-gray-700 dark:text-white rounded-md p-3 mt-1"
                       {...register("address", {
                         required: true,
                       })}

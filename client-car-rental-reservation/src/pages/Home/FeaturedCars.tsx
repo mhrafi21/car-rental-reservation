@@ -14,7 +14,7 @@ const FeaturedCars: React.FC = () => {
   const {data, isLoading} = useGetAllCarsQuery(undefined);
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-gray-100 dark:bg-black">
       <DefaultContainer>
         <h2 className="text-3xl font-bold text-center mb-12">Featured Cars</h2>
         {isLoading && <div>Loading...</div>}

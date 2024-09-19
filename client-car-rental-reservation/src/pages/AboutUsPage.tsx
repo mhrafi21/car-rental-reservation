@@ -6,13 +6,13 @@ import team3 from "../../src/assets/images/team3.jpg";
 
 const AboutUs: React.FC = () => {
   return (
-    <div>
+    <div className="dark:text-white dark:bg-black">
       <DefaultContainer>
         <div className=" py-10">
           {/* Header */}
-          <header className="text-center mb-12">
+          <header className="text-center mb-12 ">
             <h1 className="text-4xl font-bold mb-4">About Us</h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-white">
               Get to know more about our company and team.
             </p>
           </header>
@@ -20,7 +20,7 @@ const AboutUs: React.FC = () => {
           {/* Company History */}
           <section className="mb-12">
             <h2 className="text-3xl font-semibold mb-4">Our History</h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed dark:text-white">
               Founded in 2010, our company has grown to become one of the most
               trusted car rental services in the industry. Our mission is to
               provide customers with the best vehicles at competitive prices,
@@ -40,7 +40,7 @@ const AboutUs: React.FC = () => {
                   className="rounded-md mx-auto mb-4"
                 />
                 <h3 className="text-xl font-bold">John Doe</h3>
-                <p className="text-gray-600">CEO & Founder</p>
+                <p className="text-gray-600 dark:text-white">CEO & Founder</p>
               </div>
               <div className="text-center">
                 <img
@@ -49,7 +49,7 @@ const AboutUs: React.FC = () => {
                   className="rounded-md mx-auto mb-4"
                 />
                 <h3 className="text-xl font-bold">Jane Smith</h3>
-                <p className="text-gray-600">Chief Operations Officer</p>
+                <p className="text-gray-600 dark:text-white">Chief Operations Officer</p>
               </div>
               <div className="text-center">
                 <img
@@ -58,7 +58,7 @@ const AboutUs: React.FC = () => {
                   className="rounded-md mx-auto mb-4"
                 />
                 <h3 className="text-xl font-bold">Robert Brown</h3>
-                <p className="text-gray-600">Head of Customer Service</p>
+                <p className="text-gray-600 dark:text-white">Head of Customer Service</p>
               </div>
             </div>
           </section>
@@ -124,18 +124,18 @@ const AboutUs: React.FC = () => {
           </section>
 
           {/* Contact Information */}
-          <section className="bg-gray-100 p-8 rounded-lg">
+          <section className="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg">
             <h2 className="text-3xl font-semibold mb-4 text-center">
               Contact Us
             </h2>
-            <p className="text-gray-700 text-center mb-4">
+            <p className="text-gray-700 text-center mb-4 dark:text-white">
               We'd love to hear from you! Reach out to us with any questions or
               inquiries.
             </p>
-            <div className="text-center">
-              <p className="text-gray-600">Phone: (123) 456-7890</p>
-              <p className="text-gray-600">Email: support@carrental.com</p>
-              <p className="text-gray-600">
+            <div className="text-center ">
+              <p className="text-gray-600 dark:text-white">Phone: (123) 456-7890</p>
+              <p className="text-gray-600 dark:text-white">Email: support@carrental.com</p>
+              <p className="text-gray-600 dark:text-white">
                 Address: 123 Main Street, Anytown, USA
               </p>
             </div>
