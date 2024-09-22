@@ -5,7 +5,7 @@ import {
 } from "../../../redux/baseApi";
 import { TBooking } from "../../../interfaces";
 import Swal from "sweetalert2";
-import DefaultContainer from "../../../components/DefaultContainer";
+
 
 const ManageBooking: React.FC = () => {
   const { data } = useGetAllBookingsQuery(undefined);

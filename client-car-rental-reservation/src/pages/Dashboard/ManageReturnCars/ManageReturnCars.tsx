@@ -4,7 +4,6 @@ import {
   useGetAllBookingsQuery,
 } from "../../../redux/baseApi";
 import { TBooking } from "../../../interfaces";
-import DefaultContainer from "../../../components/DefaultContainer";
 
 const ManageReturnCars: React.FC = () => {
   const { data, isLoading } = useGetAllBookingsQuery(undefined);

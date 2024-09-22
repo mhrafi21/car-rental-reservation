@@ -57,11 +57,11 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
     
     <div className="fixed inset-0 flex items-center justify-center overflow-auto bg-gray-800 bg-opacity-50">
 
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+      <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg w-96">
         <h2 className="text-xl font-semibold mb-4">Update New Car</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm dark:text-white font-medium text-gray-700">
               Name
             </label>
             <input
@@ -72,17 +72,17 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block dark:text-white text-sm font-medium text-gray-700">
               Description
             </label>
             <textarea
               {...register("description")}
               defaultValue={singleCar?.data?.description}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              className="mt-1 block  w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             ></textarea>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block dark:text-white text-sm font-medium text-gray-700">
               Color
             </label>
             <input
@@ -94,19 +94,19 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
           </div>
           <div className="mb-4 ">
             <div className="block text-sm font-medium text-gray-700">Is Electric</div>
-            <label className="flex items-baseline gap-3">
+            <label className="flex dark:text-white items-baseline gap-3">
             <input
               type="checkbox"
               defaultChecked={singleCar?.data?.isElectric}
               {...register("isElectric")}
-              className="mt-1"
+              className="mt-1 "
             />
               Electric
           
               </label>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block dark:text-white text-sm font-medium text-gray-700">
               Image URL
             </label>
             <input
@@ -117,7 +117,7 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm dark:text-white font-medium text-gray-700">
               Category
             </label>
             <select
@@ -133,7 +133,7 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block dark:text-white text-sm font-medium text-gray-700">
               Reviews
             </label>
             <input
@@ -144,7 +144,7 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm dark:text-white font-medium text-gray-700">
               Features (comma-separated)
             </label>
             <textarea
@@ -155,7 +155,7 @@ const UpdateCarModal: React.FC<Props> = ({ productId, onClose }) => {
             ></textarea>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm dark:text-white font-medium text-gray-700">
               Price/Hour
             </label>
             <input

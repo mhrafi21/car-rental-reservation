@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
             <Link to="/" className="text-xl font-bold">
               MyCarRentals
             </Link>
-            <div className="hidden md:flex space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <Link to="/" className="hover:text-gray-400">
                 Home
               </Link>
@@ -93,9 +93,6 @@ const Navbar: React.FC = () => {
               </Link>
               <Link to="/cars" className="hover:text-gray-400">
                 Cars
-              </Link>
-              <Link to="/booking" className="hover:text-gray-400">
-                Booking
               </Link>
               <Link to="/contact" className="hover:text-gray-400">
                 Contact

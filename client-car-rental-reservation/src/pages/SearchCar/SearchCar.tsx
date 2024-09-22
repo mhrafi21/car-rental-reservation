@@ -19,7 +19,7 @@ const SearchCar: React.FC = () => {
   });
 
   return (
-    <div>
+    <div className="dark:bg-black">
       <DefaultContainer>
         <div className="py-8">
         <Search />

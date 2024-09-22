@@ -1,7 +1,6 @@
 import React from "react";
 import { TBookingState } from "../../../interfaces";
 import { useCreatePaymentMutation } from "../../../redux/baseApi";
-import { useNavigate } from "react-router-dom";
 
 interface BookingCardProps {
   booking: TBookingState;
@@ -15,7 +14,6 @@ const BookingCard: React.FC<BookingCardProps> = ({
   onCancel,
 }) => {
 
-const navigate = useNavigate();
   const [makePayment, {isLoading}] = useCreatePaymentMutation(undefined);
 
 
@@ -27,9 +25,6 @@ const navigate = useNavigate();
         window.location.href = res?.data?.payment_url;
       }
   }
-
-
-
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-4">

@@ -7,7 +7,7 @@ import { useAppSelector } from "../../redux/hooks";
 import { useCurrentUser } from "../../redux/features/auth/authSlice";
 import { TUser } from "../../interfaces";
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false); // State to control sidebar visibility
 
   const user: TUser = useAppSelector(useCurrentUser);

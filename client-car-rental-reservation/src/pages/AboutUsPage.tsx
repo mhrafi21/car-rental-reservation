@@ -3,6 +3,7 @@ import DefaultContainer from "../components/DefaultContainer";
 import team1 from "../../src/assets/images/team1.jpg";
 import team2 from "../../src/assets/images/team2.jpg";
 import team3 from "../../src/assets/images/team3.jpg";
+import feetImg from "../../src/assets/images/fleet.webp"
 
 const AboutUs: React.FC = () => {
   return (
@@ -66,7 +67,7 @@ const AboutUs: React.FC = () => {
           {/* Our Fleet */}
           <section className="mb-12">
             <h2 className="text-3xl font-semibold mb-4">Our Fleet</h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-gray-700 dark:text-white leading-relaxed mb-4">
               We offer a diverse range of vehicles to meet your needs, from
               economy cars for budget-conscious customers to luxury vehicles for
               those seeking premium comfort. We also have SUVs for adventurous
@@ -75,34 +76,34 @@ const AboutUs: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <img
-                  src="https://via.placeholder.com/300x200"
+                  src={feetImg}
                   alt="Economy Car"
-                  className="rounded-lg mb-4"
+                  className="rounded-lg mb-4 w-full"
                 />
                 <h3 className="text-xl font-semibold">Economy</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   Affordable and fuel-efficient cars.
                 </p>
               </div>
               <div className="text-center">
                 <img
-                  src="https://via.placeholder.com/300x200"
+                  src={feetImg}
                   alt="Luxury Car"
-                  className="rounded-lg mb-4"
+                  className="rounded-lg mb-4 w-full"
                 />
                 <h3 className="text-xl font-semibold">Luxury</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   Premium vehicles for ultimate comfort.
                 </p>
               </div>
               <div className="text-center">
                 <img
-                  src="https://via.placeholder.com/300x200"
+                  src={feetImg}
                   alt="SUV"
-                  className="rounded-lg mb-4"
+                  className="rounded-lg mb-4 w-full"
                 />
                 <h3 className="text-xl font-semibold">SUV</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   Spacious and perfect for family trips.
                 </p>
               </div>
@@ -114,7 +115,7 @@ const AboutUs: React.FC = () => {
             <h2 className="text-3xl font-semibold mb-4">
               Our Values & Commitment
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed dark:text-white">
               We are committed to delivering the highest level of customer
               service. Sustainability is also at the core of our operations; we
               aim to reduce our environmental impact by offering eco-friendly

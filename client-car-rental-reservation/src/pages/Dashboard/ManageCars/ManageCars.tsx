@@ -8,7 +8,7 @@ import {
 import { TCar } from "../../../interfaces";
 import Swal from "sweetalert2";
 import UpdateCarModal from "./UpdateCarModal";
-import DefaultContainer from "../../../components/DefaultContainer";
+
 
 const CarTable: React.FC = () => {
   const { data, isLoading } = useGetAllCarsQuery(undefined);
@@ -212,11 +212,11 @@ const CarTable: React.FC = () => {
           {/* Add Car Modal */}
           {isModalOpen && (
             <div className="fixed inset-0 flex items-center justify-center overflow-auto bg-gray-800 bg-opacity-50">
-              <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg w-96">
                 <h2 className="text-xl font-semibold mb-4">Add New Car</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block dark:text-white text-sm font-medium text-gray-700">
                       Name
                     </label>
                     <input
@@ -226,7 +226,7 @@ const CarTable: React.FC = () => {
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Description
                     </label>
                     <textarea
@@ -237,7 +237,7 @@ const CarTable: React.FC = () => {
                     ></textarea>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Color
                     </label>
                     <input
@@ -247,17 +247,18 @@ const CarTable: React.FC = () => {
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
-                      Is Electric
-                    </label>
+                    <label className="flex gap-2 items-start text-sm dark:text-white font-medium text-gray-700">
+                   
                     <input
                       {...register("isElectric")}
                       type="checkbox"
                       className="mt-1"
                     />
+                       Is Electric
+                       </label>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Image URL
                     </label>
                     <input
@@ -269,7 +270,7 @@ const CarTable: React.FC = () => {
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Category
                     </label>
                     <select
@@ -286,7 +287,7 @@ const CarTable: React.FC = () => {
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Reviews
                     </label>
                     <input
@@ -298,7 +299,7 @@ const CarTable: React.FC = () => {
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Features (comma-separated)
                     </label>
                     <input
@@ -308,7 +309,7 @@ const CarTable: React.FC = () => {
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm dark:text-white font-medium text-gray-700">
                       Price/Hour
                     </label>
                     <input

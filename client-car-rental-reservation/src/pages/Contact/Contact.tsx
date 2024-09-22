@@ -24,6 +24,7 @@ const Contact: React.FC = () => {
     <div className="py-10  dark:bg-black">
       <DefaultContainer>
         <div className="min-h-screen dark:bg-black bg-gray-100">
+          
           <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-6 text-center">
             Get in Touch
           </h1>
