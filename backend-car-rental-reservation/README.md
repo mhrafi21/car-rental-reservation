@@ -2,8 +2,7 @@
 
 This is a backend for a Car Renting System where user can rent cars and admin can manage reservation cars.
 
-Live URL
-https://backend-car-rental-reservation.vercel.app
+ - Live URL: https://server-car-rental-reservation.vercel.app/
 
 ## <span style="font-size: 24px;">Features</span>
 
