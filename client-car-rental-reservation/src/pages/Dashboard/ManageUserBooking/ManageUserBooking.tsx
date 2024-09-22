@@ -83,8 +83,8 @@ const BookingManagement: React.FC = () => {
 
   // Filter upcoming and past bookings based on current date
 
-  const upcomingBookings = data?.data.filter((booking: TBookingState) => booking?.approved === true);
-  const pastBookings = data?.data.filter((booking: TBookingState) => booking?.totalCost !== 0);
+  const upcomingBookings = data?.data.filter((booking: TBookingState) => booking?.totalCost === 0 || booking?.paymentStatus === "pending" );
+  const pastBookings = data?.data.filter((booking: TBookingState) => booking?.paymentStatus === "paid");
 
   return (
     <div className="">
@@ -124,7 +124,7 @@ const BookingManagement: React.FC = () => {
               />
             ))
           ) : (
-            <p>No upcoming bookings.</p>
+            <p className="dark:text-white">No upcoming bookings.</p>
           )}
         </div>
       ) : (
@@ -140,7 +140,7 @@ const BookingManagement: React.FC = () => {
               />
             ))
           ) : (
-            <p>No past bookings.</p>
+            <p className="dark:text-white">No past bookings.</p>
           )}
         </div>
       )}

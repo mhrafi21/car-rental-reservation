@@ -1,9 +1,8 @@
 
 ## Introduction
 
-Campers Shop is an e-commerce website dedicated to providing all the necessary and fun items for camping enthusiast.
-
-- Live Link: https://client-campers-shop.vercel.app/
+This project is a Car Rental Reservation System built to offer both users and admins an easy-to-use platform for booking cars and managing inventory. The system provides a smooth experience for customers to browse and reserve vehicles, while also enabling admins to manage bookings, cars, and user roles.
+- Live Link: 
 
 ## Project Description
 
@@ -15,46 +14,63 @@ Campers Shop is designed to cater to the needs of camping enthusiasts by offerin
   - Navbar with essential links and icons
   - Hero section
   - Best Selling/Recommended Products section with a "View More" button
-  - Categories section 
+  - Categories section
   - Featured Products section
-  - Unique section for video blogs, testimonials, or tour groups
+  - testimonials
   - FAQ section
   - Footer with contact information and social media links
 
-- **Products Page:**
-  - Product listings in a grid view
-  - Product details button
-  - Search bar, category and price range filters, sorting options, and a clear button
+- **Homepage:** 
+  - Header: Logo, navigation (Home, About Us, Booking, Contact), login/sign-up buttons.
+  - Hero Section: Large banner image with "Book Now" button and a search bar to check availability.
+  - Featured Cars: Carousel or grid layout for featured cars.
+  - Why Choose Us?: Highlights of best prices, wide selection, and 24/7 support.
+  - Customer Testimonials: Reviews and ratings from past users.
+  - Footer: Links to social media, privacy policy, terms of service, and contact details.
 
-- **Product Details Page:**
-  - Display product name, price, stock quantity, description, category, ratings, and images
-  - multiple images showing with Sider;
-  - Add to Cart button with stock management
+- **Car Listing Page:**
+  - Display all cars in grid/list view.
+  - Filters for car type, price range, and more.
+  - "View Details" button for each car.
 
-- **Product Management:**
-  - Product list table with columns for product image, name, price, category, and actions
-  - multiple images add, edit and delete handling functionality.
-  - Buttons to create, update, and delete products
-  - update and add products manage with a dynamic modal.
-  - duplicate images not allowed to update.
-
-- **Cart Page:**
-  - List of cart items with quantity controls
-  - Remove product button with confirmation prompt
-  - Dynamic pricing details
-  - Place Order button with stock checks
-
-- **Checkout Page:**
-  - User details form
-  - Payment methods (Cash on Delivery);
-  - After The order is completed quantity of the stock products automatically decreased.
+- **Car Detail Page:**
+  - Detailed information about the car, customer reviews, and high-quality images with zoom.
+  - Options for additional features like insurance or GPS.
+    "Book Now" button leading to the booking page.
 
 - **About Us Page:**
-  - Contact information
-  - Google Map embed
-  - Social media links
-  - Mission statement
-  - Team members section
+  - Company history, team profiles, fleet information, and values.
+  - Contact information.
+
+- **Sign up Page:**
+  - Name, Email, Password, confirm password, phone number, Terms & Conditions consent.
+
+- **Sign in Page:**
+  - Email, Password, links for password recovery and sign-up.
+  - Real-time validation, error handling, and redirect on success.
+
+- **User Pages (Private):**
+  - User Dashboard
+  - Manage personal info and booking history.
+  - Modify or cancel bookings (with restrictions after booking approval).
+  - Payment system for post-rental payments.
+
+- **Admin Pages (Private):**
+  - Admin Dashboard
+  - Overview: Stats for total bookings, available cars, revenue, etc.
+  - Manage Cars: Add, update, delete cars.
+  - Manage Bookings: Approve or cancel bookings.
+  - Manage Return Cars: Update car status post-return.
+  - User Management: Manage users, block/activate accounts, change roles.
+
+- **Booking Pages (User/Admin):**
+  - Booking form for personal details and payment information.
+  - Booking confirmation page to review details.
+
+- **Payment System:**
+  - Integration with local payment gateways (AmarPay).
+  - Multiple payment options.
+  - Payment summary and receipt page.
 
 ## Technology Stack
 
@@ -64,6 +80,7 @@ Campers Shop is designed to cater to the needs of camping enthusiasts by offerin
 - Redux & RTK query
 - Typescript
 - tailwind CSS
+- JWT for authentication
 - and other packages
 
 ## Installation Guideline
@@ -87,7 +104,7 @@ Make sure you have the following installed on your machine:
 1. Clone the repository(both client and server ):
 
    ```bash
-   git clone gh repo clone mhrafi21/campers-shop
+   git clone gh repo clone mhrafi21/car-rental-reservation
 
    ```
 
@@ -110,7 +127,6 @@ Make sure you have the following installed on your machine:
    ```bash
    npm run dev
    ```
-
 
 ### Contact
 

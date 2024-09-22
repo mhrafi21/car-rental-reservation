@@ -74,14 +74,14 @@ const BookingCard: React.FC<BookingCardProps> = ({
             className={`py-2 px-4 bg-green-500 text-white rounded ${
               booking?.totalCost === 0  ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            disabled={booking?.totalCost === 0 }
+            disabled={booking?.totalCost === 0  || booking?.paymentStatus == "paid" }
           >
             Pay Now
           </button> : <button
           className={`py-2 px-4 opacity-50   bg-green-500 text-white rounded ${
             booking?.totalCost === 0 ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          disabled={booking?.totalCost === 0}
+          disabled={booking?.totalCost === 0 || booking?.paymentStatus == "paid"}
         >
           Pay Now
         </button>
@@ -96,7 +96,7 @@ const BookingCard: React.FC<BookingCardProps> = ({
               booking.approved ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => onModify(booking._id as string)}
-            disabled={booking.approved}
+            disabled={booking?.approved}
           >
             Booking Again
           </button>
