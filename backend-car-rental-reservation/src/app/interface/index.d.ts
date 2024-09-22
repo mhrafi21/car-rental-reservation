@@ -15,5 +15,5 @@ interface TBPaymentProps {
   cus_phone: string;
   cus_add1: string;
   amount: string;
-  trx_id: number
+  trx_id: number;
 }

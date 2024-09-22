@@ -15,7 +15,7 @@ const createPaymentServices = async(bookingId: string) => {
             cus_name: bookingInfo?.name,
             cus_phone: bookingInfo?.phone,
             cus_add1: bookingInfo?.address,
-            amount: (bookingInfo?.totalCost)?.toString()
+            amount: (bookingInfo?.totalCost)?.toString(),
         }
     
         const result = await initiatePayment(customerInfo as TBPaymentProps);
@@ -31,7 +31,7 @@ const confirmationPaymentServices = async(id: string) => {
         await bookingModels.BookingModel.findByIdAndUpdate(id, {
             paymentStatus: 'paid'
         })
-        const filePath = join(__dirname,'../../../views/confirmation.html')
+        const filePath = join(__dirname,"../../../views/confirmation.html")
         const template = readFileSync(filePath, 'utf-8');
         return template;
     } catch (error) {
